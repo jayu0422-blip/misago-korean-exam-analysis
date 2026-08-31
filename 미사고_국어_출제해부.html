@@ -1,0 +1,969 @@
+<title>미사고 국어 출제 해부</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+<style>
+:root{
+  --paper:#F5F6F4; --surface:#FFFFFF; --surface-2:#EDEFEC;
+  --ink:#16202A; --ink-2:#3D4C57; --ink-3:#6B7A85;
+  --rule:#D8DDD8; --rule-2:#C3CBC4;
+  --lit:#1F4E79;      /* 문학 청람 */
+  --lit-2:#7BA3C6;    /* 문학 보조 */
+  --gram:#A8681B;     /* 문법 황토 */
+  --read:#2C6A54;     /* 독서 송연녹 */
+  --talk:#7A4E7E;     /* 화작 자주 */
+  --alert:#9E3B2F; --ok:#2C6A54; --warn:#8A5A12;
+  --lit-w:#E4EDF5; --gram-w:#F6EBDA; --read-w:#DFEDE7; --talk-w:#EFE6F1;
+  --shadow:0 1px 2px rgba(22,32,42,.06), 0 8px 24px -12px rgba(22,32,42,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1419; --surface:#161D24; --surface-2:#1D262E;
+    --ink:#E9EEF1; --ink-2:#B4C1CB; --ink-3:#8494A0;
+    --rule:#2A343D; --rule-2:#3A464F;
+    --lit:#84B6E2; --lit-2:#3F6B92; --gram:#E0A85A; --read:#6FBE9E; --talk:#C39BC8;
+    --alert:#E58878; --ok:#6FBE9E; --warn:#E0A85A;
+    --lit-w:#1B2C3A; --gram-w:#33270F; --read-w:#142C24; --talk-w:#2A1F2D;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1419; --surface:#161D24; --surface-2:#1D262E;
+  --ink:#E9EEF1; --ink-2:#B4C1CB; --ink-3:#8494A0;
+  --rule:#2A343D; --rule-2:#3A464F;
+  --lit:#84B6E2; --lit-2:#3F6B92; --gram:#E0A85A; --read:#6FBE9E; --talk:#C39BC8;
+  --alert:#E58878; --ok:#6FBE9E; --warn:#E0A85A;
+  --lit-w:#1B2C3A; --gram-w:#33270F; --read-w:#142C24; --talk-w:#2A1F2D;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Noto Sans KR",-apple-system,"Malgun Gothic",sans-serif;
+  font-weight:400; font-size:15.5px; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  word-break:keep-all; overflow-wrap:break-word;
+}
+.wrap{display:grid; grid-template-columns:236px minmax(0,1fr); gap:0; max-width:1360px; margin:0 auto;}
+@media (max-width:1000px){ .wrap{grid-template-columns:1fr} }
+
+/* ---------- nav ---------- */
+nav.toc{
+  position:sticky; top:0; align-self:start; max-height:100vh; overflow-y:auto;
+  padding:34px 20px 40px 26px; border-right:1px solid var(--rule);
+}
+@media (max-width:1000px){ nav.toc{position:static; max-height:none; border-right:0; border-bottom:1px solid var(--rule)} }
+nav.toc .brand{font-family:"Nanum Myeongjo",serif; font-weight:800; font-size:17px; letter-spacing:-.01em; line-height:1.4; margin-bottom:4px}
+nav.toc .brandsub{font-size:11.5px; color:var(--ink-3); letter-spacing:.02em; margin-bottom:22px}
+nav.toc a{display:block; text-decoration:none; color:var(--ink-2); font-size:13px; padding:4px 0; border-left:2px solid transparent; padding-left:10px; margin-left:-10px}
+nav.toc a:hover{color:var(--lit); border-left-color:var(--lit)}
+nav.toc a .n{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3); margin-right:7px}
+nav.toc a:focus-visible{outline:2px solid var(--lit); outline-offset:2px}
+
+main{padding:34px 40px 90px; min-width:0}
+@media (max-width:700px){ main{padding:24px 18px 70px} nav.toc{padding:22px 18px} }
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:3px double var(--ink); padding-bottom:22px; margin-bottom:34px}
+.kicker{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--lit); margin-bottom:12px}
+h1{font-family:"Nanum Myeongjo",serif; font-weight:800; font-size:clamp(34px,5.2vw,52px); line-height:1.12; letter-spacing:-.02em; margin:0 0 14px; text-wrap:balance}
+.dek{font-size:16.5px; color:var(--ink-2); max-width:62ch; margin:0 0 20px}
+.meta{display:flex; flex-wrap:wrap; gap:8px 26px; font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3)}
+.meta b{color:var(--ink); font-weight:600}
+
+h2{font-family:"Nanum Myeongjo",serif; font-weight:800; font-size:27px; letter-spacing:-.015em; margin:0 0 6px; text-wrap:balance}
+h3{font-family:"Nanum Myeongjo",serif; font-weight:700; font-size:19px; margin:30px 0 10px; letter-spacing:-.01em}
+h4{font-size:14px; font-weight:700; margin:20px 0 8px; letter-spacing:.01em}
+section{margin:0 0 62px; scroll-margin-top:20px}
+.sechead{display:flex; align-items:baseline; gap:12px; border-bottom:1px solid var(--rule-2); padding-bottom:10px; margin-bottom:20px}
+.sechead .num{font-family:"IBM Plex Mono",monospace; font-size:13px; font-weight:600; color:var(--lit); letter-spacing:.06em; flex:none}
+.lede{color:var(--ink-2); max-width:70ch; margin:0 0 18px}
+p{margin:0 0 13px; max-width:74ch}
+strong{font-weight:700}
+mark{background:var(--lit-w); color:inherit; padding:0 3px; border-radius:2px}
+
+/* ---------- cards ---------- */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); gap:14px; margin:20px 0}
+.card{background:var(--surface); border:1px solid var(--rule); border-radius:3px; padding:16px 17px; box-shadow:var(--shadow)}
+.card .lab{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3); margin-bottom:7px}
+.card .big{font-family:"Nanum Myeongjo",serif; font-weight:800; font-size:31px; line-height:1.1; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+.card .big small{font-size:15px; font-weight:400; color:var(--ink-3); margin-left:3px}
+.card p{font-size:13px; color:var(--ink-2); margin:7px 0 0; line-height:1.6}
+
+.callout{border-left:3px solid var(--lit); background:var(--surface); padding:15px 18px; margin:20px 0; border-radius:0 3px 3px 0; box-shadow:var(--shadow)}
+.callout.warn{border-left-color:var(--warn)}
+.callout.alert{border-left-color:var(--alert)}
+.callout.ok{border-left-color:var(--ok)}
+.callout .ct{font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-family:"IBM Plex Mono",monospace; margin-bottom:6px; color:var(--lit)}
+.callout.warn .ct{color:var(--warn)} .callout.alert .ct{color:var(--alert)} .callout.ok .ct{color:var(--ok)}
+.callout p:last-child{margin-bottom:0}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto; margin:18px 0; border:1px solid var(--rule); border-radius:3px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:13px; min-width:640px}
+caption{caption-side:top; text-align:left; font-size:12.5px; color:var(--ink-3); padding:11px 14px 0; font-family:"IBM Plex Mono",monospace}
+th,td{padding:8px 11px; text-align:left; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.55}
+thead th{background:var(--surface-2); font-size:11.5px; font-weight:700; letter-spacing:.04em; color:var(--ink-2); border-bottom:1px solid var(--rule-2); white-space:nowrap; position:sticky; top:0}
+tbody tr:last-child td{border-bottom:0}
+td.num,th.num{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+td.q{font-family:"IBM Plex Mono",monospace; font-weight:600; white-space:nowrap; color:var(--ink-2)}
+tbody tr:hover{background:var(--surface-2)}
+table.compact td, table.compact th{padding:6px 10px; font-size:12.5px}
+
+/* ---------- area tags ---------- */
+.tag{display:inline-block; font-size:11px; font-weight:700; padding:1px 7px; border-radius:2px; white-space:nowrap; font-family:"Noto Sans KR",sans-serif; line-height:1.7}
+.t-lit{background:var(--lit-w); color:var(--lit)}
+.t-gram{background:var(--gram-w); color:var(--gram)}
+.t-read{background:var(--read-w); color:var(--read)}
+.t-talk{background:var(--talk-w); color:var(--talk)}
+.legend{display:flex; flex-wrap:wrap; gap:7px 16px; margin:14px 0; font-size:12.5px; align-items:center}
+.legend i{display:inline-block; width:11px; height:11px; border-radius:2px; margin-right:6px; vertical-align:-1px}
+
+/* ---------- strip ---------- */
+.strips{display:flex; flex-direction:column; gap:13px; margin:22px 0}
+.striprow{display:grid; grid-template-columns:132px minmax(0,1fr); gap:14px; align-items:center}
+@media (max-width:700px){ .striprow{grid-template-columns:1fr; gap:5px} }
+.striprow .lab{font-size:12.5px; font-weight:700; line-height:1.35}
+.striprow .lab span{display:block; font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:400; color:var(--ink-3)}
+.strip{display:grid; grid-template-columns:repeat(24,1fr); gap:2px; height:30px}
+.strip i{border-radius:1px; position:relative}
+.strip i::after{content:attr(data-n); position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:"IBM Plex Mono",monospace; font-size:8.5px; color:#fff; opacity:.72}
+@media (max-width:820px){ .strip i::after{display:none} }
+.s-lit{background:var(--lit)} .s-gram{background:var(--gram)} .s-read{background:var(--read)} .s-talk{background:var(--talk)}
+
+/* ---------- stacked bars ---------- */
+.stack{display:flex; height:26px; border-radius:2px; overflow:hidden; margin:5px 0 0}
+.stack div{display:flex; align-items:center; justify-content:center; font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:#fff; letter-spacing:.02em}
+.barrow{margin:0 0 14px}
+.barrow .bl{display:flex; justify-content:space-between; font-size:12.5px; font-weight:700}
+.barrow .bl em{font-style:normal; font-family:"IBM Plex Mono",monospace; font-weight:400; color:var(--ink-3); font-size:11.5px}
+
+/* ---------- histogram ---------- */
+.hist{display:grid; grid-template-columns:repeat(10,1fr); gap:8px; align-items:end; height:170px; margin:20px 0 6px}
+.hist .col{display:flex; flex-direction:column; justify-content:flex-end; height:100%; gap:5px}
+.hist .bar{background:var(--lit); border-radius:2px 2px 0 0; min-height:3px}
+.hist .cnt{font-family:"IBM Plex Mono",monospace; font-size:11px; text-align:center; color:var(--ink-2); font-variant-numeric:tabular-nums}
+.histx{display:grid; grid-template-columns:repeat(10,1fr); gap:8px; font-family:"IBM Plex Mono",monospace; font-size:10.5px; text-align:center; color:var(--ink-3)}
+
+/* ---------- matrix ---------- */
+.mx{overflow-x:auto; margin:18px 0}
+table.matrix{min-width:560px; font-size:12.5px}
+table.matrix td.dot{text-align:center; font-family:"IBM Plex Mono",monospace; font-weight:600}
+.hit{display:inline-block; width:19px; height:19px; line-height:19px; border-radius:50%; background:var(--lit); color:#fff; font-size:10.5px}
+.hitb{background:var(--gram)}
+
+/* ---------- pipeline ---------- */
+.pipe{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:20px 0}
+.pipe .step{background:var(--surface); border:1px solid var(--rule); border-top:3px solid var(--lit); border-radius:2px; padding:14px 15px; box-shadow:var(--shadow)}
+.pipe .step.g{border-top-color:var(--gram)} .pipe .step.r{border-top-color:var(--read)} .pipe .step.t{border-top-color:var(--talk)}
+.pipe .st{font-size:13px; font-weight:700; margin-bottom:4px}
+.pipe .sv{font-family:"IBM Plex Mono",monospace; font-size:20px; font-weight:600; letter-spacing:-.01em; margin-bottom:6px}
+.pipe .sd{font-size:12px; color:var(--ink-2); line-height:1.6}
+
+/* ---------- misc ---------- */
+ul.tight{margin:8px 0 14px; padding-left:19px} ul.tight li{margin-bottom:6px; max-width:72ch}
+ol.tight{margin:8px 0 14px; padding-left:21px} ol.tight li{margin-bottom:8px; max-width:72ch}
+.quote{background:var(--surface); border:1px solid var(--rule); border-radius:3px; padding:14px 17px; margin:12px 0; font-size:13.5px; color:var(--ink-2); box-shadow:var(--shadow)}
+.quote .src{display:block; margin-top:7px; font-size:11.5px; color:var(--ink-3); font-family:"IBM Plex Mono",monospace}
+.chk{list-style:none; padding:0; margin:12px 0}
+.chk li{padding-left:26px; position:relative; margin-bottom:9px; max-width:72ch}
+.chk li::before{content:"□"; position:absolute; left:4px; top:0; color:var(--lit); font-size:15px}
+.foot{border-top:1px solid var(--rule); padding-top:18px; margin-top:50px; font-size:12px; color:var(--ink-3)}
+.foot a{color:var(--lit)}
+a{color:var(--lit)}
+.pill{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10.5px; padding:1px 6px; border:1px solid var(--rule-2); border-radius:2px; color:var(--ink-3); margin-left:5px}
+.pill.v{border-color:var(--ok); color:var(--ok)}
+.pill.e{border-color:var(--warn); color:var(--warn)}
+
+/* ---------- figures & charts ---------- */
+.figure{background:var(--surface); border:1px solid var(--rule); border-radius:3px; padding:18px 18px 15px; margin:22px 0; box-shadow:var(--shadow)}
+.fcap{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); margin-bottom:15px}
+.fnote{font-size:12.5px; color:var(--ink-2); margin:15px 0 0; line-height:1.65; max-width:none; border-top:1px solid var(--rule); padding-top:11px}
+.svgwrap{overflow-x:auto}
+svg.chart{display:block; width:100%; height:auto; min-width:560px}
+svg.chart text{font-family:"IBM Plex Mono",monospace; font-size:11px; fill:var(--ink-3)}
+svg.chart text.klbl{font-family:"Noto Sans KR",sans-serif; font-size:12px; fill:var(--ink-2); font-weight:500}
+svg.chart .grid{stroke:var(--rule)}
+svg.chart .axis{stroke:var(--rule-2)}
+
+.runs{display:grid; grid-template-columns:repeat(24,1fr); gap:2px; margin-top:4px}
+.runs span{font-size:10.5px; text-align:center; white-space:nowrap; overflow:hidden; border-top:2px solid currentColor; padding-top:3px; line-height:1.45}
+.r-lit{color:var(--lit)} .r-gram{color:var(--gram)} .r-read{color:var(--read)} .r-talk{color:var(--talk)}
+
+.gbar{display:grid; grid-template-columns:100px minmax(0,1fr) 96px; gap:12px; align-items:center; margin-bottom:9px; font-size:12.5px}
+.gbar b{font-weight:700}
+.gtrack{height:24px; display:flex; border-radius:2px; overflow:hidden; background:var(--surface-2)}
+.gtrack div{display:flex; align-items:center; justify-content:center; font-family:"IBM Plex Mono",monospace; font-size:11px; color:#fff}
+.g-old{background:var(--lit)} .g-new{background:var(--lit-2)}
+.gnum{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-3); text-align:right}
+
+.steps{position:relative; display:grid; grid-template-columns:repeat(6,1fr); gap:12px; align-items:end; height:206px; padding-top:6px}
+.steps .sc{display:flex; flex-direction:column; justify-content:flex-end; height:100%; gap:6px}
+.steps .sbar{border-radius:2px 2px 0 0; min-height:4px}
+.steps .sval{font-family:"IBM Plex Mono",monospace; font-size:12.5px; text-align:center; font-weight:600; color:var(--ink)}
+.sb-ok{background:var(--ok)} .sb-warn{background:var(--warn)} .sb-bad{background:var(--alert)}
+.cutline{position:absolute; left:0; right:0; border-top:1.5px dashed var(--alert); pointer-events:none}
+.cutline span{position:absolute; right:0; top:-20px; font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--alert); background:var(--surface); padding:0 5px}
+.stepsx{display:grid; grid-template-columns:repeat(6,1fr); gap:12px; font-size:11.5px; text-align:center; color:var(--ink-3); margin-top:9px}
+
+.gtl{display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:12px; margin:20px 0}
+.gtl .u{background:var(--surface); border:1px solid var(--rule); border-left:3px solid var(--gram); border-radius:0 3px 3px 0; padding:14px 15px; box-shadow:var(--shadow)}
+.gtl .u .when{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--gram); letter-spacing:.06em; margin-bottom:5px}
+.gtl .u .unit{font-family:"Nanum Myeongjo",serif; font-weight:700; font-size:18px; margin-bottom:10px; letter-spacing:-.01em}
+.gtl .u .qb{height:9px; border-radius:2px; background:var(--gram); margin-bottom:7px}
+.gtl .u .qn{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-3)}
+
+/* ---------- 학교 특징 ---------- */
+.insight{border:1px solid var(--rule-2); border-top:3px solid var(--ink); background:var(--surface); border-radius:0 0 3px 3px; padding:20px 22px 18px; margin:0 0 40px; box-shadow:var(--shadow)}
+.insight h2{font-family:"Nanum Myeongjo",serif; font-size:20px; margin:0 0 3px}
+.insight .sub{font-size:12px; color:var(--ink-3); margin-bottom:16px; font-family:"IBM Plex Mono",monospace; letter-spacing:.04em}
+.insight ul{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:9px 26px}
+.insight li{position:relative; padding-left:20px; font-size:14px; line-height:1.65; color:var(--ink-2)}
+.insight li::before{content:""; position:absolute; left:2px; top:10px; width:7px; height:7px; border-radius:50%; background:var(--lit)}
+.insight li b{color:var(--ink); font-weight:700}
+
+@media print{
+  nav.toc{display:none} .wrap{display:block; max-width:none}
+  main{padding:0} body{font-size:10.5pt; background:#fff}
+  section{break-inside:auto; margin-bottom:26px} h2,h3{break-after:avoid}
+  .tw{overflow:visible; break-inside:auto} table{min-width:0; font-size:8.6pt}
+  thead th{position:static} .card,.callout,.quote,.pipe .step,.figure,.gtl .u{box-shadow:none}
+  .hist{height:120px} .steps{height:150px}
+  .svgwrap{overflow:visible} svg.chart{min-width:0}
+  .figure{break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){ *{animation:none!important; transition:none!important} }
+</style>
+
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">미사고 국어<br>출제 해부</div>
+  <div class="brandsub">고1 · 6회분 · 144문항</div>
+  <a href="#s0"><span class="n">—</span>학교 특징</a>
+  <a href="#s1"><span class="n">01</span>먼저 알 여섯 가지</a>
+  <a href="#s2"><span class="n">02</span>시험지가 짜이는 방식</a>
+  <a href="#s3"><span class="n">03</span>영역별 비중</a>
+  <a href="#s4"><span class="n">04</span>학력평가 연계</a>
+  <a href="#s5"><span class="n">05</span>회차별 문항 지도</a>
+  <a href="#s6"><span class="n">06</span>작품 전수·반복 출제</a>
+  <a href="#s7"><span class="n">07</span>외부지문 운용</a>
+  <a href="#s8"><span class="n">08</span>&lt;보기&gt; 설계 8유형</a>
+  <a href="#s9"><span class="n">09</span>선지 구성 해부</a>
+  <a href="#s10"><span class="n">10</span>문법 출제 캘린더</a>
+  <a href="#s11"><span class="n">11</span>배점·5등급제</a>
+  <a href="#s12"><span class="n">12</span>실제 변별 지점</a>
+  <a href="#s13"><span class="n">13</span>김영하 코멘트</a>
+  <a href="#s14"><span class="n">14</span>인계 자료 현황</a>
+  <a href="#s15"><span class="n">15</span>확인 범위</a>
+</nav>
+
+<main>
+<header class="mast">
+  <div class="kicker">미사고등학교 1학년 국어 · 내신 인계 자료</div>
+  <h1>미사고 1학년 국어 기출분석</h1>
+  <p class="dek">안녕하세요. 현재 미사고와 미사강변고를 담당하고 있는 김영하입니다.<br>2025년부터 정리한 기출분석입니다.</p>
+  <div class="meta">
+    <span>정리 대상 <b>6개 시험 · 144문항</b></span>
+    <span>기간 <b>2025.04.28 – 2026.06.30</b></span>
+    <span>교과서 <b>2022 개정 공통국어 1·2</b> (출판사 미확인)</span>
+    <span>평가 <b>5등급제(2025~) · 1등급 10%</b></span>
+  </div>
+</header>
+
+<div class="insight" id="s0">
+  <h2>학교 특징</h2>
+  <div class="sub">여섯 번의 시험에서 공통으로 확인된 것</div>
+  <ul>
+    <li>시험지는 늘 <b>선택형 24문항 100점</b>입니다. 서답형은 여섯 번 모두 없었습니다.</li>
+    <li>화작 두 문항과 독서 두세 문항, <b>15~21점이 그해 학력평가</b>에서 지문째로 옵니다.</li>
+    <li>문법은 <b>학기마다 단원이 정해져</b> 있어, 범위가 나오기 전에 진도를 뺄 수 있습니다.</li>
+    <li>문학이 절반을 넘고, 한 세트에 <b>작품 두세 편이 함께</b> 나와 비교를 시킵니다.</li>
+    <li>어려움은 지문이 아니라 <b>&lt;보기&gt;에서 만들어집니다.</b> 이론이 붙은 문항이 배점도 큽니다.</li>
+    <li>배점이 3.7~4.6점뿐이라 <b>두 문항만 틀려도 90점대 초반</b>으로 내려갑니다.</li>
+    <li>1학기 시험은 <b>전년도 같은 차수 시험지와 작품이 겹칩니다.</b></li>
+    <li>학교 <b>학습지 없이는 대비가 안 됩니다.</b> 교과서 밖 규정과 작품이 그대로 출제됩니다.</li>
+  </ul>
+</div>
+
+<!-- ============ 1 ============ -->
+<section id="s1">
+  <div class="sechead"><span class="num">§ 01</span><h2>먼저 알아야 할 여섯 가지</h2></div>
+  <p class="lede">시간이 없으면 이 절만 읽어도 됩니다. 아래 여섯 개가 이 학교 시험의 뼈대이고, 뒤에 오는 내용은 그걸 하나씩 풀어 놓은 것입니다.</p>
+
+  <div class="cards">
+    <div class="card"><div class="lab">문항 수</div><div class="big">24<small>문항</small></div><p>6회 전부 선택형 24문항·100점. 서답형 0. 2024년 26문항에서 24문항으로 고정됐다.</p></div>
+    <div class="card"><div class="lab">문항당 배점</div><div class="big">3.7–4.6<small>점</small></div><p>평균 4.17점. 저배점 문항이 없다. <mark>2문항만 틀려도 91점대</mark>로 내려간다.</p></div>
+    <div class="card"><div class="lab">문학 비중</div><div class="big">55.9<small>점</small></div><p>회당 문학 12~15문항. 시험의 절반 이상이 문학이며, 회당 본문 작품이 7~11편이다.</p></div>
+    <div class="card"><div class="lab">학평에서 오는 몫</div><div class="big">4–5<small>문항</small></div><p>화작 2 + 독서 2~3, 15.4~20.8점. <mark>그해 학력평가 지문</mark>을 그대로 가져온다. 26-1 중간은 독서가 3문항 13.2점으로 늘었다.</p></div>
+    <div class="card"><div class="lab">문법</div><div class="big">5–8<small>문항</small></div><p>학기와 차수별로 단원이 정해져 있다. 범위가 나오기 전에도 진도를 뺄 수 있는 구간이다.</p></div>
+    <div class="card"><div class="lab">허용 오답</div><div class="big">2<small>문항</small></div><p>지필 기준. 세 개째부터 87점대로 내려간다. 1등급 컷 90점대 초반은 <mark>전언이며 미확인</mark>이다.</p></div>
+  </div>
+
+  <div class="callout ok">
+    <div class="ct">줄이면 이렇게 된다</div>
+    <p>그해 학력평가에서 네 문항, 교과서와 학습지 작품에서 열두에서 열다섯 문항, 학기마다 정해진 문법에서 다섯에서 여덟 문항. 여섯 번 모두 이 비율이었습니다. 어려움을 만드는 자리는 지문이 아니라 <strong>&lt;보기&gt;와 선지</strong>입니다.</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section id="s2">
+  <div class="sechead"><span class="num">§ 02</span><h2>시험지가 짜이는 방식</h2></div>
+  <p class="lede">영역별 분량은 여섯 번 모두 비슷한데, 놓이는 자리는 회차마다 달라집니다. 아래 띠는 1번부터 24번까지 각 문항이 어느 영역인지를 시험지 순서 그대로 칠한 것입니다.</p>
+
+  <div class="pipe">
+    <div class="step t"><div class="st">학력평가에서 오는 몫</div><div class="sv">4–5문항 / 15.4–20.8점</div><div class="sd">화법 또는 화법+작문 2문항, 독서 2~3문항. 그해 3·6·9·11월 고1 학평 지문을 그대로 가져온다. 다만 문항은 학교가 새로 만든다.</div></div>
+    <div class="step"><div class="st">교과서와 학습지</div><div class="sv">12–15문항 / 50–63점</div><div class="sd">교과서 수록작에 학습지로 배부한 작품이 더해진다. 두세 편을 한 세트로 묶고 &lt;보기&gt;에 외부 작품이나 이론을 덧댄다.</div></div>
+    <div class="step g"><div class="st">학기마다 정해진 문법</div><div class="sv">5–8문항 / 21–34점</div><div class="sd">차수별로 단원이 고정돼 있다. 교과서 밖 규정과 조항을 학습지로 먼저 배부한 뒤 그대로 낸다.</div></div>
+  </div>
+
+  <div class="legend">
+    <span><i style="background:var(--lit)"></i>문학</span>
+    <span><i style="background:var(--gram)"></i>문법</span>
+    <span><i style="background:var(--read)"></i>독서(비문학)</span>
+    <span><i style="background:var(--talk)"></i>화법·작문</span>
+    <span style="color:var(--ink-3);font-size:11.5px">숫자는 문항 번호</span>
+  </div>
+
+  <div class="figure">
+    <div class="fcap">그림 2-1 · 회차별 문항 배치 (1번 → 24번)</div>
+    <div class="strips" id="strips"></div>
+    <p class="fnote">각 칸이 문항 하나입니다. 띠 아래 라벨은 같은 영역이 몇 문항 이어졌는지를 나타냅니다. 색 뭉치의 크기는 비슷하지만 놓이는 자리가 회차마다 옮겨 다닙니다.</p>
+  </div>
+
+  <h3>띠에서 확인되는 것</h3>
+  <ul class="tight">
+    <li>시작 영역이 회차마다 다릅니다. 25-1 중간은 화작, 25-2 중간은 독서, 26-1 중간은 현대시 여덟 문항으로 시작했습니다. 앞부분에 어떤 영역이 오는지가 고정되어 있지 않습니다.</li>
+    <li>문법은 여섯 번 모두 한 뭉치로 붙어 나왔습니다. 5~8문항이 통째로 이어지므로, 이 구간에서만 20~34점이 한 번에 결정됩니다.</li>
+    <li>끝나는 방식도 회차마다 다릅니다. 마지막 세 문항이 문학인 것은 25-2 기말뿐이고(윤흥길 「장마」, 3.8·4.4·4.6), 25-1 기말과 26-1 기말은 마지막 두 문항이 독서였습니다. 26-1 기말은 끝 네 문항이 4.6·3.8·3.7·4.2로 오히려 가볍고, 고배점은 중반에 몰려 있었습니다.</li>
+    <li>2026년에 달라진 것은 도입부입니다. 26-1 중간은 현대시 여섯 편, 여덟 문항으로 시작했습니다. 2025년 두 번의 중간고사가 화작·독서로 시작한 것과 다릅니다.</li>
+  </ul>
+</section>
+
+<!-- ============ 3 ============ -->
+<section id="s3">
+  <div class="sechead"><span class="num">§ 03</span><h2>영역별 비중</h2></div>
+  <p class="lede">100점이 어떻게 나뉘는지 정리했습니다. 6회 평균은 <strong>문학 55.9 · 문법 27.6 · 독서 8.9 · 화작 7.7</strong>입니다.</p>
+
+  <div class="figure">
+    <div class="fcap">그림 3-1 · 100점이 나뉘는 모양</div>
+    <div id="bars"></div>
+    <p class="fnote">막대 전체가 100점입니다. 오른쪽 끝의 독서·화작 두 칸은 여섯 번 내내 거의 움직이지 않습니다. 움직이는 것은 문학과 문법 사이의 경계입니다.</p>
+  </div>
+
+  <div class="figure">
+    <div class="fcap">그림 3-2 · 문학과 문법의 교대</div>
+    <div class="svgwrap"><svg class="chart" id="trend" viewBox="0 0 720 274" role="img" aria-label="회차별 영역 배점 추이 그래프"></svg></div>
+    <p class="fnote">2학기에는 문학이 63점까지 올라가고 문법이 21점으로 내려갑니다. 1학기에는 다시 반대가 됩니다. 아래쪽 두 선이 학평에서 그대로 오는 몫입니다. 화작은 여섯 번 모두 7.5~7.8점으로 일정하고, 독서는 다섯 번 8점 안팎이었다가 26-1 중간에서 13.2점으로 늘었습니다.</p>
+  </div>
+
+  <div class="figure">
+    <div class="fcap">그림 3-3 · 문학 문항의 고전 대 현대</div>
+    <div id="genre"></div>
+    <p class="fnote">1학기 중간 두 번은 고전이 한 문항도 없었습니다. 반면 1학기 기말은 두 번 모두 고전이 5~6문항 21~25점이고, 2학기 중간은 열다섯 문항 중 열 문항이 고전이었습니다.</p>
+  </div>
+
+  <div class="tw">
+    <table class="compact">
+      <caption>표 3-1 · 회차별 영역 배분 (문항 수 / 배점)</caption>
+      <thead><tr><th>회차</th><th>시행일</th><th>과목</th><th class="num">문학</th><th class="num">문법</th><th class="num">독서</th><th class="num">화작</th><th class="num">합계</th></tr></thead>
+      <tbody>
+        <tr><td>25-1 중간</td><td class="num">2025.04.28</td><td>공통국어1</td><td class="num">12 / 50.5</td><td class="num">8 / 34.1</td><td class="num">2 / 7.9</td><td class="num">2 / 7.5</td><td class="num">24 / 100.0</td></tr>
+        <tr><td>25-1 기말</td><td class="num">2025.06.30</td><td>공통국어1</td><td class="num">13 / 54.4</td><td class="num">7 / 29.8</td><td class="num">2 / 8.1</td><td class="num">2 / 7.7</td><td class="num">24 / 100.0</td></tr>
+        <tr><td>25-2 중간</td><td class="num">2025.10.01</td><td>공통국어2</td><td class="num">15 / 63.4</td><td class="num">5 / 20.9</td><td class="num">2 / 7.9</td><td class="num">2 / 7.8</td><td class="num">24 / 100.0</td></tr>
+        <tr><td>25-2 기말</td><td class="num">2025.12.11</td><td>공통국어2</td><td class="num">15 / 63.0</td><td class="num">5 / 21.1</td><td class="num">2 / 8.3</td><td class="num">2 / 7.6</td><td class="num">24 / 100.0</td></tr>
+        <tr><td>26-1 중간</td><td class="num">2026.04.28</td><td>공통국어1</td><td class="num">12 / 49.7</td><td class="num">7 / 29.5</td><td class="num">3 / 13.2</td><td class="num">2 / 7.6</td><td class="num">24 / 100.0</td></tr>
+        <tr><td>26-1 기말</td><td class="num">2026.06.30</td><td>공통국어1</td><td class="num">13 / 54.5</td><td class="num">7 / 29.9</td><td class="num">2 / 7.9</td><td class="num">2 / 7.7</td><td class="num">24 / 100.0</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <div class="ct">1학기와 2학기는 다른 시험이다</div>
+    <p>1학기(공통국어1)는 문법 7~8문항에 30점 안팎, 문학 12~13문항입니다. 2학기(공통국어2)에서는 문법이 5문항 21점으로 줄고 문학이 15문항 63점까지 올라갑니다. 고전시가와 고전소설이 한꺼번에 들어오는 것도 2학기입니다. <mark>같은 학년이지만 학기별로 시험의 성격이 다릅니다.</mark></p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section id="s4">
+  <div class="sechead"><span class="num">§ 04</span><h2>학력평가 연계 — 1회 원문 확인, 5회 추정</h2></div>
+  <p class="lede">2026년 3월 학평과 26-1 중간 사이에서는 지문이 그대로 겹치는 것이 확인됩니다. 나머지 다섯 번은 지문 성격에 따른 추정이며 아직 원본 대조 전입니다.</p>
+
+  <div class="tw">
+    <table>
+      <caption>표 4-1 · 2026학년도 3월 고1 학력평가(2026.03.24) ↔ 미사고 26-1 중간고사 대조</caption>
+      <thead><tr><th>영역</th><th>학력평가</th><th>미사고 26-1 중간</th><th>동일성</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-talk">화법</span></td><td class="num">1~3번</td><td class="num">9~10번</td><td>발표 「호작도 — 호랑이와 까치」. 발표문 전문 동일, 문항만 재구성</td></tr>
+        <tr><td><span class="tag t-read">독서</span></td><td class="num">11~14번</td><td class="num">11~13번</td><td>도널드 A. 뉴만 『근육뼈대계통의 기능해부학 및 운동학』 — 골격근·지레·근육원섬유마디. 지레 도해 &lt;보기&gt;까지 동일</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout ok">
+    <div class="ct">검증 방법</div>
+    <p>EBSi가 배포한 2026학년도 3월 고1 전국연합학력평가 국어영역 정답·해설지 원문과 시험지를 직접 대조했습니다. 해설지의 <em>“[11~14] (과학) 도널드 A. 뉴만”</em> 항목과 <em>1번 발표 ‘여기 호작도를 볼까요?’</em> 문구가 미사고 시험지 본문과 일치합니다.</p>
+  </div>
+
+  <div class="tw">
+    <table class="compact">
+      <caption>표 4-2 · 회차별 학평 세트 추정 (독서·화작 4~5문항의 출처)</caption>
+      <thead><tr><th>회차</th><th>대응 학평</th><th>화법·작문 소재</th><th>독서 소재</th><th>확인</th></tr></thead>
+      <tbody>
+        <tr><td>25-1 중간</td><td class="num">2025년 3월</td><td>또래상담부 회의 + 회의 바탕 초고</td><td>사회/법 — 형사법·민사법의 입증 정도</td><td><span class="pill e">패턴 추정</span></td></tr>
+        <tr><td>25-1 기말</td><td class="num">2025년 6월</td><td>발표 — 자외선 차단제(SPF·PA)</td><td>과학기술 — 지진파와 내진·제진·면진</td><td><span class="pill e">패턴 추정</span></td></tr>
+        <tr><td>25-2 중간</td><td class="num">2025년 9월</td><td>작문 — 푸드테크 초고 + 자료 활용</td><td>예술 — 샤프츠베리 미학 / 듀이 ‘하나의 경험’</td><td><span class="pill e">패턴 추정</span></td></tr>
+        <tr><td>25-2 기말</td><td class="num">2025년 11월</td><td>모의 협상 — 생태 탐방로</td><td>기술 — 비분산형 적외선 분석기</td><td><span class="pill e">패턴 추정</span></td></tr>
+        <tr><td>26-1 중간</td><td class="num">2026년 3월</td><td>발표 — 호작도</td><td>과학 — 골격근과 지레</td><td><span class="pill v">원문 대조 확인</span></td></tr>
+        <tr><td>26-1 기말</td><td class="num">2026년 6월</td><td>발표 — 대화의 원리·체면 유지의 원리</td><td>인문/철학 — 사유 발생의 조건(하이데거·들뢰즈·키에르케고르·아리스토텔레스)</td><td><span class="pill e">패턴 추정</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <div class="ct">그래서 무엇을 해야 하나</div>
+    <p>3월과 6월 학평이 끝난 시점에 그 시험지의 화법 한 세트와 독서 한 지문은 이미 <mark>내신 15~21점</mark>에 해당합니다. 다만 학교가 문항까지 그대로 가져오지는 않습니다. 지문만 옮기고 문항은 새로 만듭니다. 26-1 기말의 철학자 네 명 지문처럼 원지문이 어려우면 내신 문항도 그만큼 어려워집니다.</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section id="s5">
+  <div class="sechead"><span class="num">§ 05</span><h2>회차별 문항 지도</h2></div>
+  <p class="lede">여섯 회 전 문항을 세트·제재·&lt;보기&gt;·배점까지 옮겼습니다. 이 절만 보고도 개별 시험지의 구성을 그대로 확인하실 수 있습니다.</p>
+
+  <h3>A. 2025학년도 1학기 중간 <span class="pill">2025.04.28 · 공통국어1</span></h3>
+  <div class="tw"><table>
+    <thead><tr><th class="num">문항</th><th>영역</th><th>본문 제재</th><th>&lt;보기&gt;·장치</th><th class="num">배점</th></tr></thead>
+    <tbody>
+      <tr><td class="q">1–2</td><td><span class="tag t-talk">화작</span></td><td>(가) 또래상담부 회의 대화 / (나) 회의를 바탕으로 쓴 초고</td><td>대화→작문 연계형</td><td class="num">3.7 · 3.8</td></tr>
+      <tr><td class="q">3–6</td><td><span class="tag t-lit">현대시</span></td><td>(가) 손택수 「나무의 꿈」 (나) 신경림 「동해바다 — 후포에서」 (다) 문태준 「산수유나무의 농사」</td><td>3편 공통점·차이 비교, ㉠~㉤ 표현 대응</td><td class="num">4.1 · 4.3 · 4.0 · 4.2</td></tr>
+      <tr><td class="q">7–10</td><td><span class="tag t-lit">갈래복합</span></td><td>(가) 백석 「선우사」 (나) 백석 「가재미·나귀」(수필) (다) 김혜순 「납작납작 — 박수근 화법을 위하여」</td><td>10번 &lt;보기&gt; = 김훈 「겸재의 빛」(외부 수필)</td><td class="num">4.2 · 4.1 · 4.2 · 4.5</td></tr>
+      <tr><td class="q">11–12</td><td><span class="tag t-gram">문법 · 음운</span></td><td>음운 개념 지문(자음·모음 체계, 조음 위치·방법) — <strong>11·12번 전용</strong></td><td>12 ㄱ~ㅂ 조합형(진술 6개 중 옳은 것)</td><td class="num">3.7 · 3.8</td></tr>
+      <tr><td class="q">13–18</td><td><span class="tag t-gram">문법 · 음운</span></td><td>— (지문 없는 독립 문항 6개)</td><td>13 선생님–학생 대화 / 14 ㉠~㉥ 탈락 / 15 음운 개수 변화 3분류 / <strong>16 표준발음법 12개 조항 원문 제시(제9·10·11·13·17·18·20·23·24·26·27·29항)</strong> / 17 ‘ㅎ’ 변동 / <strong>18 21~24번 소설 본문 문장을 문법 자료로 재활용</strong></td><td class="num">4.4 · 4.3 · 4.4 · 4.6 · 4.4 · 4.5</td></tr>
+      <tr><td class="q">19–20</td><td><span class="tag t-read">독서·사회</span></td><td>형사법과 민사법 — 입증 정도의 차이</td><td>—</td><td class="num">3.9 · 4.0</td></tr>
+      <tr><td class="q">21–24</td><td><span class="tag t-lit">현대소설</span></td><td>박완서 「배반의 여름」 — 줄거리 없이 본문에서 곧장 시작, (중략) 다회 삽입</td><td>21 서술상 특징 예/아니오 표 / <strong>23 &lt;보기&gt; = 「배반의 여름」 비평문(‘배반’의 의미와 여름의 열기, 5단락)</strong> / 24 &lt;보기&gt; = 이수익 「결빙의 아버지」</td><td class="num">3.9 · 3.8 · 4.6 · 4.6</td></tr>
+    </tbody>
+  </table></div>
+  <p>문법이 8문항 34.1점으로 여섯 번 중 가장 무거웠습니다. 16번은 표준발음법 조항 열두 개를 통째로 제시하고 사례를 조항 번호까지 대응시키는 문항으로, 교과서 범위를 넘습니다. 18번도 눈여겨보실 만합니다. 뒤에 나올 소설 지문의 문장에 밑줄을 그어 음운 변동을 물었습니다. <mark>문학 지문을 문법 자료로 다시 쓰는 방식</mark>이며, 이후 시험에서도 계속 나옵니다.</p>
+
+  <h3>B. 2025학년도 1학기 기말 <span class="pill">2025.06.30 · 공통국어1</span></h3>
+  <div class="tw"><table>
+    <thead><tr><th class="num">문항</th><th>영역</th><th>본문 제재</th><th>&lt;보기&gt;·장치</th><th class="num">배점</th></tr></thead>
+    <tbody>
+      <tr><td class="q">1–2</td><td><span class="tag t-talk">화법</span></td><td>수업 중 학생 발표 — 자외선 차단제(SPF·PA)</td><td>—</td><td class="num">3.9 · 3.8</td></tr>
+      <tr><td class="q">3–5</td><td><span class="tag t-lit">고전 복합</span></td><td>(가) 정약용 「남과탄」(한시, 원문 병기) (나) 윤선도 「만흥」 6수 (다) 이규보 「사가재기」</td><td>한시·연시조·고전수필 3갈래 묶음</td><td class="num">4.1 · 4.0 · 4.4</td></tr>
+      <tr><td class="q">6–12</td><td><span class="tag t-gram">문법 · 문법요소</span></td><td>높임 / 시제 / 동작상 / 피동 / 인용</td><td>6 높임 판정 순서도 / 7 높임 오류 수정 / 10 대응 능동문이 없는 피동 / 11 파생·통사적 피동 / 12 직접→간접 인용 전환</td><td class="num">4.5 · 4.2 · 4.0 · 4.4 · 4.1 · 4.3 · 4.3</td></tr>
+      <tr><td class="q">13–16</td><td><span class="tag t-lit">현대시</span></td><td>(가) 백석 「남신의주 유동 박시봉방」 (나) 나희덕 「땅끝」</td><td>14 &lt;보기&gt; = 김기택 「어둠도 자세히 보면 환하다」 전문 / <strong>16 역설 이론 &lt;보기1&gt; + 외부 시구 5개 &lt;보기2&gt;</strong></td><td class="num">4.2 · 4.6 · 4.5 · 3.9</td></tr>
+      <tr><td class="q">17–19</td><td><span class="tag t-lit">고전수필</span></td><td>조귀명 「왜려설(倭驢說)」 — 결말 단락(글을 짓게 된 내력)까지 수록</td><td><strong>18 &lt;보기&gt; = 조귀명의 사유 방식을 ‘의(意)’로 규정한 비평문, 작품을 (1)~(4) 단락으로 분해</strong> / 19 &lt;보기&gt; = 이식 「환목어」(한시, 원문 병기)</td><td class="num">3.8 · 4.6 · 4.2</td></tr>
+      <tr><td class="q">20–22</td><td><span class="tag t-lit">희곡</span></td><td>이강백 「파수꾼」 (앞부분 줄거리 제시)</td><td><strong>21 &lt;보기&gt; = 「파수꾼」의 폭력 구조 비평문(망루=권력의 기제 / 가해자·피해자의 순환 / 절대적 가해자·피해자의 부재) — 선지 5개가 전부 이 준거에 대응</strong></td><td class="num">3.8 · 4.6 · 3.7</td></tr>
+      <tr><td class="q">23–24</td><td><span class="tag t-read">독서·기술</span></td><td>지진파 P파·S파 / 내진·제진·면진 구조</td><td>24 &lt;보기&gt; = 구조 도식 3종</td><td class="num">3.7 · 4.4</td></tr>
+    </tbody>
+  </table></div>
+  <p>본문 문학만 일곱 편이고 갈래는 한시·연시조·고전수필·현대시·희곡 다섯 종입니다. 16번은 역설을 이론으로 먼저 정의한 뒤 처음 보는 시구 다섯 개에 적용시킵니다. <mark>개념을 낯선 사례에 대입시키는</mark> 형태로, 이 학교에서 반복해 나오는 문항입니다.</p>
+
+  <h3>C. 2025학년도 2학기 중간 <span class="pill">2025.10.01 · 공통국어2</span></h3>
+  <div class="tw"><table>
+    <thead><tr><th class="num">문항</th><th>영역</th><th>본문 제재</th><th>&lt;보기&gt;·장치</th><th class="num">배점</th></tr></thead>
+    <tbody>
+      <tr><td class="q">1–2</td><td><span class="tag t-read">독서·예술</span></td><td>(가) 샤프츠베리의 미학 (나) 듀이의 ‘하나의 경험’ — 2지문 비교</td><td>2 &lt;보기&gt; = 라파엘로 「아테네 학당」</td><td class="num">3.9 · 4.0</td></tr>
+      <tr><td class="q">3–4</td><td><span class="tag t-talk">작문</span></td><td>푸드테크 초고</td><td>3 &lt;보기&gt; = 통계 그래프 2 + 전문가 인터뷰 + 신문기사(자료 활용 방안) / 4 &lt;보기&gt; = 글쓰기 방식 ㄱ~ㄹ 조합형</td><td class="num">4.0 · 3.8</td></tr>
+      <tr><td class="q">5–10</td><td><span class="tag t-lit">고전시가 5편</span></td><td>(가) 「정읍사」 (나) 「가시리」 (다) 정지상 「송인」(한문 병기) (라) 홍랑 「묏버들」 (마) 허난설헌 「사시사」 중 춘사</td><td>7 &lt;보기&gt; = 정지용 「달」 / 8 &lt;보기&gt; = 고려속요의 궁중악 편입 학술 지문</td><td class="num">4.4 · 4.3 · 4.6 · 4.2 · 4.2 · 4.1</td></tr>
+      <tr><td class="q">11–15</td><td><span class="tag t-lit">현대시</span></td><td>(가) 김소월 「개여울」 (나) 김소월 「가는 길」 (다) 이성복 「서해」</td><td>13 &lt;보기2&gt; = 김소월 「초혼」 전문 / 14 &lt;보기&gt; = 김기림 「길」 전문</td><td class="num">3.8 · 3.7 · 4.6 · 4.5 · 4.1</td></tr>
+      <tr><td class="q">16–19</td><td><span class="tag t-lit">고전소설</span></td><td>「춘향전」 — 어사출두 대목 (앞부분 줄거리 제시)</td><td>17 &lt;보기&gt; = 성삼문 시조 / 19 &lt;보기2&gt; = 정희성 「물구나무서기」</td><td class="num">4.3 · 4.4 · 3.7 · 4.5</td></tr>
+      <tr><td class="q">20–23</td><td><span class="tag t-gram">문법 · 중세국어</span></td><td>『월인석보』 권1 훈민정음 서문</td><td>22 &lt;보기&gt; = 「곽거매자」(1481) / 23 &lt;보기2&gt; = 중세 문장 ㄱ~ㅁ</td><td class="num">4.2 · 3.8 · 4.4 · 4.6</td></tr>
+      <tr><td class="q">24</td><td><span class="tag t-gram">문법 · 어휘</span></td><td>— (지문 없는 독립 문항)</td><td>&lt;보기&gt; = 의미 변화 3유형(확대·축소·이동) + 세수·말씀·어린·놈·어엿비 대조표</td><td class="num">3.9</td></tr>
+    </tbody>
+  </table></div>
+  <p>여섯 번 중 문학이 가장 많았습니다. 15문항 63.4점입니다. 고전시가 다섯 편을 한 세트로 묶은 5~10번이 여섯 문항 25.8점으로 이 회차에서 가장 큰 덩어리입니다. 문법은 다섯 문항으로 줄었지만(훈민정음 서문 지문 4문항 + 어휘 의미 변화 독립 1문항) 서문을 원문으로 읽어야 합니다.</p>
+
+  <h3>D. 2025학년도 2학기 기말 <span class="pill">2025.12.11 · 공통국어2</span></h3>
+  <div class="tw"><table>
+    <thead><tr><th class="num">문항</th><th>영역</th><th>본문 제재</th><th>&lt;보기&gt;·장치</th><th class="num">배점</th></tr></thead>
+    <tbody>
+      <tr><td class="q">1–2</td><td><span class="tag t-talk">화작</span></td><td>수업 중 모의 협상 — 생태 탐방로</td><td>2 자료 활용(표·메모·신문기사)</td><td class="num">3.7 · 3.9</td></tr>
+      <tr><td class="q">3–4</td><td><span class="tag t-read">독서·기술</span></td><td>비분산형 적외선 분석기</td><td>4 &lt;보기&gt; = 기기 구조 도식</td><td class="num">4.0 · 4.3</td></tr>
+      <tr><td class="q">5–7</td><td><span class="tag t-lit">고전시가 4편</span></td><td>(가) 충담사 「안민가」 (나) 길재 「오백 년 도읍지를」 (다) 신희문 「시내 흐르는 골에」 (라) 사설시조 「님이 오마 하거늘」</td><td>6 &lt;보기2&gt; = 이직 「가마귀 검다 하고」 / 7 &lt;보기1&gt; = 해학 이론</td><td class="num">3.9 · 4.2 · 4.5</td></tr>
+      <tr><td class="q">8–9</td><td><span class="tag t-lit">가사·연시조</span></td><td>(가) 정극인 「상춘곡」 (나) 이정 「풍계육가」 6수</td><td><strong>9 &lt;보기1&gt; = 「풍계육가」 창작 배경·주제 이론(처사의 삶, 자연 예찬, 벼슬길의 위험 인식) + &lt;보기2&gt; ㄱ~ㅁ 조합형</strong></td><td class="num">3.8 · 4.6</td></tr>
+      <tr><td class="q">10–13</td><td><span class="tag t-lit">수필</span> + <span class="tag t-gram">어문규정</span></td><td>공선옥 「그 시절 우리들의 집」</td><td><strong>10·11은 문학, 12·13은 같은 지문으로 사이시옷(제30항)과 보조용언 띄어쓰기를 묻는 어문규정 문항</strong></td><td class="num">3.7 · 4.3 · 4.4 · 4.2</td></tr>
+      <tr><td class="q">14–16</td><td><span class="tag t-gram">한글맞춤법</span></td><td>—</td><td>14 접미사 표기 분류 순서도(제시어 12개→A~D) / 15 제6·10·21항 적용 / 16 제5·11·19·30·40항 오표기 탐구</td><td class="num">4.5 · 4.2 · 3.8</td></tr>
+      <tr><td class="q">17–18</td><td><span class="tag t-lit">현대시</span></td><td>김수영 「폭포」</td><td>17 &lt;보기1&gt; 창작 배경 + &lt;보기2&gt; 학생 감상글 ⓐ~ⓔ / 18 &lt;보기&gt; ㄱ~ㅂ 조합형</td><td class="num">4.1 · 4.4</td></tr>
+      <tr><td class="q">19–21</td><td><span class="tag t-lit">현대시</span></td><td>(가) 신석정 「꽃덤불」 (나) 황지우 「새들도 세상을 뜨는구나」</td><td>20 &lt;보기2&gt; = 이성부 「누룩」</td><td class="num">4.1 · 4.6 · 4.0</td></tr>
+      <tr><td class="q">22–24</td><td><span class="tag t-lit">현대소설</span></td><td>윤흥길 「장마」 (앞부분 줄거리 + 중략 2회)</td><td>23 &lt;보기&gt; = 박남수 「할머니 꽃씨를 받으시다」</td><td class="num">3.8 · 4.4 · 4.6</td></tr>
+    </tbody>
+  </table></div>
+  <p>10~13번을 보시면 이 학교의 출제 방식이 잘 드러납니다. 수필 지문 하나에 문학 두 문항과 어문규정 두 문항을 함께 걸었습니다. <mark>지문 하나로 두 영역을 동시에 평가</mark>하는 구성이며, 여기서 8.6점이 어문규정 쪽에 있습니다.</p>
+
+  <h3>E. 2026학년도 1학기 중간 <span class="pill">2026.04.28 · 공통국어1</span></h3>
+  <div class="tw"><table>
+    <thead><tr><th class="num">문항</th><th>영역</th><th>본문 제재</th><th>&lt;보기&gt;·장치</th><th class="num">배점</th></tr></thead>
+    <tbody>
+      <tr><td class="q">1–4</td><td><span class="tag t-lit">현대시</span></td><td>(가) 손택수 「나무의 꿈」 (나) 복효근 「버팀목에 대하여」 (다) 신경림 「나목」</td><td>4 &lt;보기2&gt; = 복효근 「눈이 내리는 까닭」 — <strong>범위 내 같은 작가의 다른 작품</strong></td><td class="num">4.1 · 4.0 · 4.4 · 4.5</td></tr>
+      <tr><td class="q">5–8</td><td><span class="tag t-lit">현대시</span></td><td>(가) 백석 「선우사」 (나) 기형도 「엄마 걱정」 (다) 정호승 「슬픔이 기쁨에게」</td><td>6 작품×항목 표 조합형 / 7 &lt;보기&gt; = 백석 음식 시론 / 8 &lt;보기&gt; = 슬픔의 미적 감동 이론</td><td class="num">3.9 · 3.8 · 4.3 · 4.6</td></tr>
+      <tr><td class="q">9–10</td><td><span class="tag t-talk">화법</span></td><td>학생 발표 — 호작도(호랑이와 까치) <span class="pill v">2026 3월 학평</span></td><td>10 &lt;보기&gt; = 청중 1·2·3의 반응</td><td class="num">3.7 · 3.9</td></tr>
+      <tr><td class="q">11–13</td><td><span class="tag t-read">독서·과학</span></td><td>골격근·지레의 원리·근육원섬유마디 수축 <span class="pill v">2026 3월 학평</span></td><td>11 ㄱ~ㅂ 조합형 / 12·13 지레·필라멘트 도해 &lt;보기&gt;</td><td class="num">4.6 · 4.2 · 4.4</td></tr>
+      <tr><td class="q">14–15</td><td><span class="tag t-gram">문법 · 음운</span></td><td>음운·분절/비분절, 조음 위치·방법, 소리의 세기, 모음 체계 지문 — <strong>14·15번 전용</strong></td><td>15 ㄱ~ㅂ 조합형</td><td class="num">4.0 · 3.8</td></tr>
+      <tr><td class="q">16–20</td><td><span class="tag t-gram">문법 · 음운</span></td><td>— (지문 없는 독립 문항 5개)</td><td><strong>16 음운 변동 판정 순서도 A~D</strong> / 17 표준발음법 제29항 원문 + 붙임1·2·다만 / 18 선생님–학생 대화, 교체·탈락·첨가·축약 종합 / 19 된소리되기 조건 지문 / 20 비표준발음 탐구표</td><td class="num">4.6 · 4.2 · 4.4 · 4.3 · 4.2</td></tr>
+      <tr><td class="q">21–24</td><td><span class="tag t-lit">현대소설</span></td><td>박완서 「배반의 여름」 — 25-1중간과 같은 작품이지만 <strong>발췌 범위가 다르다.</strong> 26년판은 앞부분 줄거리를 붙이고 풀장 도입부·수영 습득 대목을 앞에 더해 늘렸다(출처 미표기)</td><td>22 [A]/[B] 서술 특징 대비 / 23 &lt;보기&gt; = 빌둥스로만(성장소설) 이론 — <strong>26년에 새로 들어온 구간에서 출제</strong> / 24 ⓐ~ⓔ 대응</td><td class="num">4.1 · 3.7 · 4.5 · 3.8</td></tr>
+    </tbody>
+  </table></div>
+  <p>현대시 여섯 편을 두 세트로 나눠 앞쪽 여덟 문항 33.6점에 배치했습니다. 25-1 중간과 나란히 놓고 보면 <mark>시는 그대로 두고 묶음을 바꿨고, 소설은 발췌 범위를 넓혀 다시 냈습니다</mark>. 손택수 「나무의 꿈」, 백석 「선우사」, 박완서 「배반의 여름」이 모두 다시 나왔습니다. 달라진 것은 &lt;보기&gt;입니다. 7번과 8번, 23번의 &lt;보기&gt;는 짧은 비평문에 가깝습니다.</p>
+
+  <h3>F. 2026학년도 1학기 기말 <span class="pill">2026.06.30 · 공통국어1</span></h3>
+  <div class="tw"><table>
+    <thead><tr><th class="num">문항</th><th>영역</th><th>본문 제재</th><th>&lt;보기&gt;·장치</th><th class="num">배점</th></tr></thead>
+    <tbody>
+      <tr><td class="q">1–3</td><td><span class="tag t-lit">현대시 3편</span></td><td>(가) 곽재구 「사평역에서」 (나) 문태준 「평상이 있는 국숫집」 (다) 서정주 「외할머니의 뒤안 툇마루」(산문시, 『질마재 신화』)</td><td>3 ㄱ~ㅂ 조합형(공간 Ⓐ·Ⓑ·Ⓒ 비교) — 선지가 (다)를 ‘화자·시적 대상’으로 다룹니다</td><td class="num">4.0 · 3.9 · 4.6</td></tr>
+      <tr><td class="q">4–5</td><td><span class="tag t-talk">화법</span></td><td>발표 — 대화의 원리 중 체면 유지의 원리(소극적 체면)</td><td>5 &lt;보기&gt; = ⓐ~ⓔ 부담 완화 표현의 문법적 실현(보조 용언·종결 어미·부사어·종속적으로 이어진 문장·선어말 어미) <strong>— 화법 지문에 문법 문항을 얹음</strong></td><td class="num">3.7 · 4.0</td></tr>
+      <tr><td class="q">6–8</td><td><span class="tag t-gram">문법 · 높임</span></td><td>—</td><td>6 주체/객체/상대 [+·−] 표기 판정 / 7 직접→간접 인용 / 8 높임 표현 ㉠~㉧(8개) 종합 분석</td><td class="num">4.3 · 3.8 · 4.3</td></tr>
+      <tr><td class="q">9–12</td><td><span class="tag t-gram">문법 · 시제/동작상/피동</span></td><td>시제·동작상 지문 / 피동 지문</td><td>9 탐구활동 표 / 10 시제·동작상 A~F 분류 매트릭스 / 11 선어말어미 ‘-겠-·-더-’ 대화형 / 12 피동 지문 + &lt;보기&gt; ㄱ~ㄹ 종합(파생·통사적 피동, ‘-되다’, 대응 능동문 부재, 이중 피동)</td><td class="num">4.5 · 4.4 · 4.4 · 4.2</td></tr>
+      <tr><td class="q">13–17</td><td><span class="tag t-lit">희곡</span></td><td>이근삼 「원고지」</td><td>14 연출 조언형 / 15 &lt;보기&gt; = 오규원 「프란츠 카프카」 / 16 &lt;보기1&gt; 부조리극 이론 + &lt;보기2&gt; ㄱ~ㅁ 조합형</td><td class="num">3.9 · 3.8 · 4.5 · 4.6 · 4.1</td></tr>
+      <tr><td class="q">18–20</td><td><span class="tag t-lit">고전시가</span></td><td>(가) 맹사성 「강호사시가」 (나) 정약용 「보리타작」(한시 원문 병기)</td><td>18 &lt;보기&gt; = 공간 체험 이론 / 20 학생 1~5 토의형</td><td class="num">4.4 · 4.1 · 4.2</td></tr>
+      <tr><td class="q">21–22</td><td><span class="tag t-lit">고전수필</span></td><td>조귀명 「왜려설」 — 25-1기말 재출제. <strong>발췌는 오히려 줄었다</strong>(&lt;중략&gt; 1회 삽입, 결말 단락 삭제. 출처도 “중에서”로 표기)</td><td>21 &lt;보기&gt; = 보드리야르의 시뮬라크르·시뮬라시옹·하이퍼리얼리티</td><td class="num">4.6 · 3.8</td></tr>
+      <tr><td class="q">23–24</td><td><span class="tag t-read">독서·인문</span></td><td>사유 발생의 조건 — 하이데거·들뢰즈·키에르케고르·아리스토텔레스</td><td>23 ㄱ~ㅁ 조합형 / 24 가상 인터뷰 구성형</td><td class="num">3.7 · 4.2</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout ok" style="margin-top:14px">
+    <div class="ct">이 회차만 학교 공식 정답·배점표가 있다</div>
+    <p>시험지 마지막 장(12쪽)에 학교가 출력한 「정기시험 교과목별 정답/배점」이 붙어 있습니다. 선택형만점 100.00 · <strong>서답형만점 0.00</strong> · 과목만점 100.00입니다. 위 표의 배점 24개가 이 공식표와 완전히 일치합니다.</p>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;margin-top:8px"><strong>정답</strong> 1② 2③ 3② 4⑤ 5① 6③ 7③ 8② 9⑤ 10④ 11② 12⑤ 13⑤ 14④ 15③ 16② 17④ 18⑤ 19③ 20① 21③ 22① 23④ 24②</p>
+  </div>
+  <p>문법 일곱 문항이 6~12번에 몰려 있고(29.9점) 그 뒤로 문학 열 문항이 이어집니다. 21번은 18세기 고전수필에 20세기 프랑스 철학을 &lt;보기&gt;로 붙인 문항으로, 지금까지 확인된 &lt;보기&gt; 가운데 작품과 가장 거리가 먼 경우입니다.</p>
+</section>
+
+<!-- ============ 6 ============ -->
+<section id="s6">
+  <div class="sechead"><span class="num">§ 06</span><h2>작품 전수 목록과 반복 출제</h2></div>
+  <p class="lede">6회 동안 본문으로 쓰인 문학 작품은 연 48편입니다(재출제 4편을 빼면 서로 다른 작품 44편). &lt;보기&gt;로 들어온 외부 텍스트는 25건이 넘습니다. 확인된 두 쌍에서 <strong>전년도 같은 차수와 작품이 겹치는 경우</strong>가 나타나는데, 겹치는 정도는 차수마다 다릅니다.</p>
+
+  <h3>반복 출제 매트릭스 — 2025년과 2026년의 겹침</h3>
+  <div class="mx"><table class="matrix">
+    <thead><tr><th>작품</th><th class="dot">25-1중간</th><th class="dot">25-1기말</th><th class="dot">26-1중간</th><th class="dot">26-1기말</th><th>재출제 방식</th></tr></thead>
+    <tbody>
+      <tr><td>손택수 「나무의 꿈」</td><td class="dot"><span class="hit">가</span></td><td class="dot">·</td><td class="dot"><span class="hit">가</span></td><td class="dot">·</td><td>같은 (가) 자리. 함께 묶인 시만 교체</td></tr>
+      <tr><td>백석 「선우사」</td><td class="dot"><span class="hit">가</span></td><td class="dot">·</td><td class="dot"><span class="hit">가</span></td><td class="dot">·</td><td>같은 (가) 자리. 25년은 수필과, 26년은 현대시와 묶음</td></tr>
+      <tr><td>박완서 「배반의 여름」</td><td class="dot"><span class="hit">21</span></td><td class="dot">·</td><td class="dot"><span class="hit">21</span></td><td class="dot">·</td><td>같은 문항 번호대. 26년은 발췌를 앞으로 늘리고 문항 전면 교체</td></tr>
+      <tr><td>조귀명 「왜려설」</td><td class="dot">·</td><td class="dot"><span class="hit">17</span></td><td class="dot">·</td><td class="dot"><span class="hit">21</span></td><td>발췌를 줄이고(중략 1회·결말 단락 삭제) 문항도 3→2로 축소. 대신 &lt;보기&gt;를 작품론에서 현대 철학으로 교체</td></tr>
+      <tr><td colspan="6" style="background:var(--surface-2);font-weight:700;font-size:12px">아래는 재출제가 아니라 작가 선호 — 같은 차수 규칙이 적용되지 않습니다</td></tr>
+      <tr><td>신경림</td><td class="dot"><span class="hit">동해바다</span></td><td class="dot">·</td><td class="dot"><span class="hit">나목</span></td><td class="dot">·</td><td>같은 시인, 다른 작품</td></tr>
+      <tr><td>문태준</td><td class="dot"><span class="hit">산수유나무</span></td><td class="dot">·</td><td class="dot">·</td><td class="dot"><span class="hit">평상이 있는</span></td><td>같은 시인, 다른 작품. <strong>중간 → 기말로 차수를 건너뛰었다</strong></td></tr>
+      <tr><td>정약용</td><td class="dot">·</td><td class="dot"><span class="hit">남과탄</span></td><td class="dot">·</td><td class="dot"><span class="hit">보리타작</span></td><td>같은 시인, 다른 한시</td></tr>
+      <tr><td>희곡 1편</td><td class="dot">·</td><td class="dot"><span class="hitb">파수꾼</span></td><td class="dot">·</td><td class="dot"><span class="hitb">원고지</span></td><td>1학기 기말 2회 모두 희곡 1편 — 관측 2건. 2학기 두 회에는 희곡이 없습니다</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout ok">
+    <div class="ct">겹치는 정도</div>
+    <p>확인된 두 쌍의 겹침 정도가 꽤 다릅니다. <strong>1학기 중간은 본문 7편 중 3편</strong>이 전년도에서 다시 나왔지만, <strong>1학기 기말은 7편 중 1편</strong>(「왜려설」)뿐입니다. 2학기 대응쌍은 아직 확보되지 않아 비교할 수 없습니다. 그리고 작품이 같아도 문항은 새로 만들어집니다. 「왜려설」은 26년에 지문이 오히려 줄고 &lt;보기&gt;가 통째로 바뀌었습니다.</p>
+  </div>
+
+  <h3>본문 문학 작품 전수 목록</h3>
+  <div class="tw"><table class="compact">
+    <thead><tr><th>회차</th><th>현대시</th><th>고전시가</th><th>산문(소설·수필·극)</th></tr></thead>
+    <tbody>
+      <tr><td>25-1 중간</td><td>손택수 나무의 꿈 / 신경림 동해바다-후포에서 / 문태준 산수유나무의 농사 / 백석 선우사 / 김혜순 납작납작</td><td>—</td><td>백석 가재미·나귀(수필) / 박완서 배반의 여름</td></tr>
+      <tr><td>25-1 기말</td><td>백석 남신의주 유동 박시봉방 / 나희덕 땅끝</td><td>정약용 남과탄 / 윤선도 만흥</td><td>이규보 사가재기 / 조귀명 왜려설 / 이강백 파수꾼</td></tr>
+      <tr><td>25-2 중간</td><td>김소월 개여울 / 김소월 가는 길 / 이성복 서해</td><td>정읍사 / 가시리 / 정지상 송인 / 홍랑 묏버들 / 허난설헌 사시사(춘사)</td><td>춘향전</td></tr>
+      <tr><td>25-2 기말</td><td>김수영 폭포 / 신석정 꽃덤불 / 황지우 새들도 세상을 뜨는구나</td><td>충담사 안민가 / 길재 시조 / 신희문 시조 / 사설시조 님이 오마 하거늘 / 정극인 상춘곡 / 이정 풍계육가</td><td>공선옥 그 시절 우리들의 집(수필) / 윤흥길 장마</td></tr>
+      <tr><td>26-1 중간</td><td>손택수 나무의 꿈 / 복효근 버팀목에 대하여 / 신경림 나목 / 백석 선우사 / 기형도 엄마 걱정 / 정호승 슬픔이 기쁨에게</td><td>—</td><td>박완서 배반의 여름</td></tr>
+      <tr><td>26-1 기말</td><td>곽재구 사평역에서 / 문태준 평상이 있는 국숫집 / 서정주 외할머니의 뒤안 툇마루(산문시)</td><td>맹사성 강호사시가 / 정약용 보리타작</td><td>이근삼 원고지 / 조귀명 왜려설</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>&lt;보기&gt;로 들어온 외부 텍스트</h3>
+  <div class="tw"><table class="compact">
+    <thead><tr><th>회차</th><th>외부 작품</th><th>이론·비평·자료</th></tr></thead>
+    <tbody>
+      <tr><td>25-1 중간</td><td>김훈 겸재의 빛(수필) / 이수익 결빙의 아버지</td><td>「배반의 여름」 비평문(23번, 4.6점 — ‘배반’의 의미와 여름의 열기) / 표준발음법 12개 조항 원문(제9·10·11·13·17·18·20·23·24·26·27·29항)</td></tr>
+      <tr><td>25-1 기말</td><td>김기택 어둠도 자세히 보면 환하다 / 이식 환목어 / 역설 시구 5편</td><td>조귀명의 ‘의(意)’론(18번, 4.6점) / 「파수꾼」 폭력 구조론(21번, 4.6점) / 역설법 이론 / 내진구조 도식</td></tr>
+      <tr><td>25-2 중간</td><td>정지용 달 / 김소월 초혼 / 김기림 길 / 성삼문 시조 / 정희성 물구나무서기 / 곽거매자(1481)</td><td>고려속요 궁중악 편입 학술 지문 / 라파엘로 아테네 학당</td></tr>
+      <tr><td>25-2 기말</td><td>이직 가마귀 검다 하고 / 이성부 누룩 / 박남수 할머니 꽃씨를 받으시다</td><td>「풍계육가」 처사의 삶 이론(9번, 4.6점) / 해학 이론 / 한글맞춤법 제5·6·10·11·19·21·30·40항 / 김수영 창작 배경</td></tr>
+      <tr><td>26-1 중간</td><td>복효근 눈이 내리는 까닭</td><td>백석 음식 시론 / 슬픔의 미적 감동론 / 빌둥스로만 이론 / 표준발음법 제29항</td></tr>
+      <tr><td>26-1 기말</td><td>오규원 프란츠 카프카</td><td>부조리극 이론 / 공간 체험 이론 / 보드리야르 시뮬라크르론</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section id="s7">
+  <div class="sechead"><span class="num">§ 07</span><h2>외부지문 운용 — 어디가 미공지인가</h2></div>
+  <p class="lede">이 학교에서 “외부지문”이라고 부르는 것에는 성격이 다른 두 가지가 섞여 있습니다. 아래와 같이 나누어 보시면 됩니다.</p>
+
+  <div class="cards">
+    <div class="card" style="border-left:3px solid var(--lit)">
+      <div class="lab">본문 자리에 들어오는 외부 작품</div>
+      <div class="big" style="font-size:22px">사전 공지형</div>
+      <p><strong>학습지로 배부된 뒤 출제됩니다.</strong> 교과서에 없지만 수업에서 다룬 작품입니다. 제가 파악한 바로는 <mark>회당 4~5편</mark>입니다. 학습지가 없으면 확인할 방법이 없습니다.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--alert)">
+      <div class="lab">사전 공지 없는 낯선 글</div>
+      <div class="big" style="font-size:22px">미공지형</div>
+      <p><strong>2023~2024년에는 본문 자리에 들어왔습니다.</strong> 2026년에는 본문에서 거의 사라지고 대신 <mark>&lt;보기&gt; 안으로 이동</mark>했습니다. 현재는 2~3문항 수준입니다.</p>
+    </div>
+  </div>
+
+  <h3>연도별 외부지문 운용의 이동</h3>
+  <div class="tw"><table class="compact">
+    <thead><tr><th>시기</th><th>운용 방식</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td class="num">2023</td><td>본문 자리에 미공지 작품을 다수 배치. 「삼포 가는 길」과 처음 보는 「사람 사는 집」 등</td><td>당시 외부 분석 자료(원본 미확보)</td></tr>
+      <tr><td class="num">2024</td><td>선택형 26문항 중 <strong>비교과서 출제 13문항(50%)</strong>. 교과서 창비(최원식). 난이도 ‘상’</td><td>당시 외부 분석 자료(원본 미확보)</td></tr>
+      <tr><td class="num">2025</td><td>24문항으로 고정. 본문은 교과서·학습지 중심으로 정돈되고, 외부 작품이 &lt;보기&gt;로 이동. 25-2중간은 &lt;보기&gt; 외부 시만 5편. <strong>본격 비평문 &lt;보기&gt;도 이미 이때부터 매 회차에 깔려 있었다</strong>(25-1중간 23번, 25-1기말 18·21번, 25-2기말 9번 — 모두 4.6점)</td><td>시험지 실물</td></tr>
+      <tr><td class="num">2026</td><td>본문 미공지 외부지문 2~3문항 수준으로 축소. 달라진 것은 &lt;보기&gt;의 <strong>참조 거리</strong>다. 작품 내재 비평에서 작품 바깥 이론으로 넘어갔다(보드리야르·빌둥스로만·부조리극)</td><td>시험지 실물</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout alert">
+    <div class="ct">한 가지 덧붙이면</div>
+    <p>외부지문이 줄었다고 해서 시험이 쉬워졌다고 보기는 어렵습니다. 본문이 익숙해진 자리를 &lt;보기&gt;가 메웠습니다. 총량이 늘었는지는 2023~2024년 시험지가 없어 판정할 수 없고, 확보된 6회는 모두 본문 11면으로 분량이 일정합니다. 다만 &lt;보기&gt;의 성격이 무거워진 것은 실물로 확인됩니다.</p>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section id="s8">
+  <div class="sechead"><span class="num">§ 08</span><h2>&lt;보기&gt; 설계 8유형</h2></div>
+  <p class="lede">이 시험의 실질적인 난이도는 &lt;보기&gt;에서 갈립니다. 여섯 번의 시험에 반복해서 나온 형태를 여덟 가지로 묶었습니다.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th style="width:34px">#</th><th>유형</th><th>하는 일</th><th>확인된 사례</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td><strong>이론 &lt;보기&gt;</strong><br><span style="font-size:11.5px;color:var(--ink-3)">외적 준거</span></td><td>문학 이론·비평문을 제시하고 본문에 적용시킵니다. 사실상 짧은 비문학 지문을 읽고 문학에 대입하는 이중 과제</td><td><strong>작품 내재 비평(2025)</strong> 「배반의 여름」론(25-1중간 23) · 조귀명 ‘의(意)’론(25-1기말 18) · 「파수꾼」 폭력 구조론(25-1기말 21) · 「풍계육가」 처사의 삶(25-2기말 9) · 역설법(25-1기말 16) · 해학(25-2기말 7) · 백석 음식 시론(26-1중간 7)<br><strong>작품 외부 이론(2026)</strong> 빌둥스로만(26-1중간 23) · 슬픔의 미적 감동(26-1중간 8) · 부조리극(26-1기말 16) · 공간 체험(26-1기말 18) · 보드리야르 시뮬라크르(26-1기말 21)</td></tr>
+      <tr><td class="num">2</td><td><strong>외부 작품 &lt;보기&gt;</strong></td><td>다른 시·시조·수필 전문을 넣어 본문과 비교시킵니다. 처음 보는 작품을 시험장에서 해석해야 합니다</td><td>김소월 초혼 · 김기림 길 · 정지용 달 · 이성부 누룩 · 박남수 · 오규원 · 이수익 · 김훈 · 이식 환목어 · 이직 · 성삼문 · 정희성</td></tr>
+      <tr><td class="num">3</td><td><strong>규정 원문 &lt;보기&gt;</strong></td><td>표준발음법·한글맞춤법 조항을 번호째로 제시하고 사례를 조항에 대응시킵니다. 교과서 범위를 넘습니다</td><td>표준발음법 12개 조항(25-1중간 16) · 제29항 붙임1·2·다만(26-1중간 17) · 한글맞춤법 8개 조항(25-2기말 15·16)</td></tr>
+      <tr><td class="num">4</td><td><strong>순서도·도식 &lt;보기&gt;</strong></td><td>판정 절차를 흐름도로 주고 사례를 분기에 배치시킵니다. 개념을 절차로 알고 있어야 합니다</td><td>음운 변동 판정 A~D(26-1중간 16) · 높임 판정(25-1기말 6) · 접미사 표기 분류(25-2기말 14) · 지레 도해(26-1중간 12) · 내진구조 도식(25-1기말 24)</td></tr>
+      <tr><td class="num">5</td><td><strong>매트릭스 &lt;보기&gt;</strong></td><td>표의 각 칸을 ○/× 또는 [+]/[−]로 채우게 합니다. 부분 지식으로는 한 칸도 못 채웁니다</td><td>시제·동작상 A~F(26-1기말 10) · 주체/객체/상대 높임 [+·−](26-1기말 6) · 비표준발음 탐구표(26-1중간 20) · 작품×항목 표(26-1중간 6) · 의미 변화표(25-2중간 24)</td></tr>
+      <tr><td class="num">6</td><td><strong>탐구활동형</strong></td><td>‘탐구 목표–탐구 자료–탐구 결과’ 형식을 그대로 문항화합니다. 수업 활동지를 시험에 옮긴 형태</td><td>26-1기말 9 · 26-1중간 20 · 26-1중간 16 [학습 활동]</td></tr>
+      <tr><td class="num">7</td><td><strong>대화형</strong><br><span style="font-size:11.5px;color:var(--ink-3)">선생님–학생</span></td><td>교사 발화로 개념을 설명하고 학생 답변 [A]를 완성시킵니다. 설명을 읽고 즉석에서 규칙을 추출해야 합니다</td><td>25-1중간 13 · 26-1중간 18 · 26-1기말 11 · 25-2기말 12</td></tr>
+      <tr><td class="num">8</td><td><strong>반응·감상·토의형</strong></td><td>청중 반응, 학생 감상글, 토의, 가상 인터뷰를 제시하고 타당성을 판정시킵니다</td><td>청중 1~3(26-1중간 10) · 학생 감상글 ⓐ~ⓔ(25-2기말 17) · 학생 1~5 토의(26-1기말 20) · 가상 인터뷰(26-1기말 24)</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout">
+    <div class="ct">덧붙이는 관찰</div>
+    <p>6회분에서 4.6점 문항 열여덟 개 가운데 상당수가 이론 &lt;보기&gt; 문항이었습니다. 작품 자체를 알고 있어도, 이론 &lt;보기&gt;를 읽고 본문에 대입하는 과정이 별도로 요구되는 구조입니다.</p>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section id="s9">
+  <div class="sechead"><span class="num">§ 09</span><h2>선지 구성 해부</h2></div>
+  <p class="lede">문항의 형태 자체가 변별 장치로 쓰입니다. 흔히 생각하는 단순 5지선다는 오히려 적습니다.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>선지 형식</th><th>구조</th><th>왜 어려운가</th><th>빈도</th></tr></thead>
+    <tbody>
+      <tr><td><strong>조합형</strong><br><span style="font-size:11.5px;color:var(--ink-3)">ㄱ~ㅂ 중 있는 대로</span></td><td>&lt;보기&gt;에 진술 4~6개를 두고 옳은 것만 모두 고르게 합니다. ①ㄱ,ㄷ ②ㄴ,ㅂ …</td><td><mark>부분 지식으로 찍을 수 없다.</mark> 6개 진술 중 하나만 판단이 틀려도 오답. 실질적으로 한 문항이 6문항입니다</td><td class="num">회당 2~4문항</td></tr>
+      <tr><td><strong>빈칸 [A] 완성형</strong></td><td>학생 발화나 탐구 결과의 [A]에 들어갈 내용을 고릅니다</td><td>정답 진술이 길고, 선지 간 차이가 조사·부사 한두 개입니다</td><td class="num">회당 1~3문항</td></tr>
+      <tr><td><strong>기호 대응형</strong><br><span style="font-size:11.5px;color:var(--ink-3)">㉠~㉲, ⓐ~ⓔ</span></td><td>본문에 밑줄 5~8개를 긋고 각각의 설명을 검증합니다</td><td>지문 전체를 훑지 않고는 소거가 안 됩니다. 시간을 가장 많이 씁니다</td><td class="num">회당 2~4문항</td></tr>
+      <tr><td><strong>대칭 비교형</strong></td><td>“(가)는 (나)와 달리 …”, “[A]는 …을, [B]는 …을”</td><td>두 작품 각각에 대해 참·거짓을 따로 판정해야 하므로 판정 횟수가 2배</td><td class="num">모든 복합 세트</td></tr>
+      <tr><td><strong>예/아니오 표형</strong></td><td>서술상 특징을 표로 제시하고 예/아니오 체크의 적절성을 묻습니다</td><td>선지가 표 안에 숨어 형태 인식이 늦습니다</td><td class="num">25-1중간 21 등</td></tr>
+      <tr><td><strong>단순 5지선다</strong></td><td>가장 적절한/적절하지 않은 것</td><td>이 학교에서는 오히려 소수. 발문 자체는 평이해도 선지 문장이 2~3행으로 깁니다</td><td class="num">나머지</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>선지 문장의 공통 문법</h3>
+  <ul class="tight">
+    <li>선지 대부분이 “∼를 통해 ∼을 드러내고 있다” 형태입니다. 앞의 기법과 뒤의 효과가 각각 판정 대상이라, 기법은 맞는데 효과가 틀린 선지가 자주 나옵니다.</li>
+    <li>개념어를 정확한 뜻으로 씁니다. 원관념과 보조관념, 주객전도, 음성상징어, 객관적 상관물, 관형사형 전성어미, 시뮬라크르까지 나옵니다. 용어의 뜻을 모르면 선지를 읽는 단계에서 막힙니다.</li>
+    <li>“(가)는 (다)와 달리 현재형 시어를 사용하여”처럼, 내용은 맞는데 <em>‘∼와 달리’</em>가 거짓인 선지가 반복해서 나옵니다.</li>
+    <li>문항 수로 세면 24개지만, 선지 단위로 세면 판단해야 하는 횟수가 120번을 넘습니다. 조합형에서는 선지 하나 안에서 진술 네다섯 개를 다시 따져야 하므로 실제로는 그보다 많습니다.</li>
+  </ul>
+</section>
+
+<!-- ============ 10 ============ -->
+<section id="s10">
+  <div class="sechead"><span class="num">§ 10</span><h2>문법 출제 캘린더</h2></div>
+  <p class="lede">학기와 차수별로 단원이 정해져 있습니다. 1학기 두 차수에서 단원 구성이 2025년과 2026년 모두 같았습니다. 다만 문항 수와 배점은 중간이 8→7문항, 34.1→29.5점으로 줄었습니다. 2학기는 2026년이 아직 시행 전이라 대조할 수 없습니다.</p>
+
+  <div class="gtl" id="gtl"></div>
+
+  <div class="tw"><table>
+    <thead><tr><th>차수</th><th>단원</th><th class="num">2025</th><th class="num">2026</th><th>세부 출제 요소</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1학기 중간</strong></td><td>음운</td><td class="num">8문항 / 34.1</td><td class="num">7문항 / 29.5</td><td>음운 개념·분절/비분절 · 자음 체계(조음 위치·방법·소리의 세기) · 모음 체계(전후·고저·원순) · 최소대립쌍 · 음운 변동 4유형(교체·탈락·첨가·축약) · 음운 개수 변화 · <strong>표준발음법 조항 원문</strong> · 된소리되기 조건 · ‘ㄴ’ 첨가(제29항) · 비표준발음 탐구</td></tr>
+      <tr><td><strong>1학기 기말</strong></td><td>문법 요소</td><td class="num">7문항 / 29.8</td><td class="num">7문항 / 29.9</td><td>높임(주체·객체·상대 [+·−] 판정, 오류 수정, 특수 어휘) · 시제(선어말어미·관형사형 어미) · 동작상(진행·완료) · 선어말어미 ‘-겠-·-더-’의 확장 용법 · 피동(파생·통사적·이중 피동·대응 능동문 부재) · 인용(직접→간접 전환)</td></tr>
+      <tr><td><strong>2학기 중간</strong></td><td>중세국어</td><td class="num">5문항 / 20.9</td><td class="num" style="color:var(--warn)">예측</td><td>『월인석보』 훈민정음 서문 원문 · 중세 표기·문법 요소 · 15세기 문헌(곽거매자) 적용 · 어휘 의미 변화(확대·축소·이동)</td></tr>
+      <tr><td><strong>2학기 기말</strong></td><td>한글맞춤법·표기</td><td class="num">5문항 / 21.1</td><td class="num" style="color:var(--warn)">예측</td><td>사이시옷(제30항) · 보조용언 띄어쓰기 · 접미사 표기 분류 · 제5·6·10·11·19·21·40항 적용 · <strong>문학 지문에 밑줄을 그어 규정을 묻는 교차 배치</strong></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout ok">
+    <div class="ct">2026학년도 2학기 참고</div>
+    <p>2025년 구성이 2026년 1학기에 그대로 반복됐습니다. 이대로라면 2학기 중간은 중세국어 다섯 문항 안팎, 기말은 한글맞춤법과 표기 다섯 문항 안팎이 됩니다. 문학이 63점대까지 올라가는 학기이므로 문법 다섯 문항 21점의 비중이 상대적으로 커집니다. 다만 이 예측의 근거는 <strong>1학기 두 차수의 관측 각 1건</strong>입니다. 담당 교사나 교과서가 바뀌면 달라질 수 있습니다.</p>
+  </div>
+
+  <div class="callout warn">
+    <div class="ct">학습지 관련</div>
+    <p>학교는 교과서 밖 내용까지 담은 문법 학습지를 배부합니다. 시험 범위가 ‘문법 요소’여도 품사와 문장 성분 같은 기본 개념까지 학습지에서 다루고, 그것이 쪽지시험이나 지필로 이어집니다. 실물 시험지에도 표준발음법과 한글맞춤법 조항이 원문 그대로 &lt;보기&gt;에 들어와 있습니다. <mark>학습지에 실린 범위가 곧 출제 범위</mark>이며, 시판 교재에는 없는 내용입니다.</p>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section id="s11">
+  <div class="sechead"><span class="num">§ 11</span><h2>배점 설계와 5등급제</h2></div>
+  <p class="lede">2025학년도 고1부터 <strong>5등급제</strong>입니다(9등급제는 2024학년도가 마지막입니다). 1등급은 상위 10%입니다. 배점 구성과 맞물려 실수 허용 범위가 좁습니다.</p>
+
+  <div class="figure">
+    <div class="fcap">그림 11-1 · 144문항의 배점 분포</div>
+    <div class="hist" id="hist"></div>
+    <div class="histx" id="histx"></div>
+    <div class="legend" style="margin-top:14px">
+      <span><i style="background:var(--lit)"></i>3.7 – 4.3점 · 96문항</span>
+      <span><i style="background:var(--gram)"></i>4.4 – 4.6점 · 48문항</span>
+      <span style="color:var(--ink-3);font-size:11.5px">가로축은 배점, 세로축은 해당 배점을 가진 문항 수</span>
+    </div>
+    <p class="fnote">평균 4.17점, 최저 3.7점, 최고 4.6점입니다. 3점대 초반 이하로 내려가는 문항이 하나도 없습니다. <strong>배점이 낮은 문항이 존재하지 않는 구조입니다.</strong> 황토색으로 표시한 4.4점 이상 48문항은 대부분 &lt;보기&gt;를 쓰는 문항입니다.</p>
+  </div>
+
+  <div class="figure">
+    <div class="fcap">그림 11-2 · 틀린 개수와 남는 점수</div>
+    <div class="steps" id="steps"></div>
+    <div class="stepsx" id="stepsx"></div>
+    <p class="fnote">평균 배점 4.17점으로 계산한 값입니다. 두 개까지는 90점대에 남지만 세 개째에서 87점대로 내려갑니다. 어떤 배점의 문항을 틀렸는지에 따라 최대 2.7점까지 차이가 납니다.</p>
+  </div>
+
+  <div class="tw"><table class="compact">
+    <caption>표 11-1 · 지필 원점수 손실(수행평가 미반영). 학기 등급은 지필과 수행을 합산한 석차로 정해진다. 아래는 등급 예측치가 아니라 지필 100점 안에서의 손실 크기다.</caption>
+    <thead><tr><th class="num">오답 수</th><th class="num">평균 배점 기준 점수</th><th class="num">고배점만 틀렸을 때</th><th>참고 위치 (1컷 90점대 초반이라는 전언 기준)</th></tr></thead>
+    <tbody>
+      <tr><td class="num">0</td><td class="num">100.0</td><td class="num">100.0</td><td>1등급 유력</td></tr>
+      <tr><td class="num">1</td><td class="num">95.8</td><td class="num">95.4</td><td>1등급 유력</td></tr>
+      <tr><td class="num">2</td><td class="num">91.7</td><td class="num">90.8</td><td><strong>경계</strong> — 어느 배점을 틀렸는지에 따라 갈립니다</td></tr>
+      <tr><td class="num">3</td><td class="num">87.5</td><td class="num">86.2</td><td>1등급 이탈 가능</td></tr>
+      <tr><td class="num">4</td><td class="num">83.3</td><td class="num">81.6</td><td>2등급 이하 가능</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="cards">
+    <div class="card"><div class="lab">5등급제 누적 비율</div><div class="big" style="font-size:19px">10 / 34 / 66 / 90 / 100<small>%</small></div><p>1등급 상위 10%, 2등급 누적 34%, 3등급 66%, 4등급 90%. 9등급제의 4%(1등급)보다 문은 넓어졌지만, <strong>한 학교 안에서 10%는 여전히 좁다.</strong></p></div>
+    <div class="card"><div class="lab">실질 허용 오답</div><div class="big">2<small>문항</small></div><p>1등급 컷이 90점대 초반이므로 3문항을 틀리면 87점대로 내려가 사실상 이탈한다.</p></div>
+    <div class="card"><div class="lab">배점 편차의 함정</div><div class="big">0.9<small>점</small></div><p>최고·최저 배점 차. 4.6점 문항 3개를 틀리는 것과 3.7점 문항 3개를 틀리는 것은 <mark>2.7점</mark> 차이로, 등급이 갈릴 수 있는 크기다.</p></div>
+  </div>
+
+  <div class="callout warn">
+    <div class="ct">배점 큰 문항은 어디에 있나</div>
+    <p>4.6점 문항 열여덟 개는 놓이는 위치가 일정하지 않습니다. 세트 마지막인 것은 대여섯 개뿐이고, 25-1 기말의 14·18·21번은 셋 다 세트 중간에 있었습니다. 다만 거의 전부가 &lt;보기&gt;를 쓰는 문항입니다. 25-1 중간 16번(표준발음법 조항)·23번(비평문), 25-1 기말 18번·21번, 26-1 중간 8번(슬픔의 미학)·16번, 26-1 기말 16번(부조리극)·21번(보드리야르)이 그렇습니다.</p>
+  </div>
+
+  <div class="callout alert">
+    <div class="ct">여백의 손글씨 수치에 관하여</div>
+    <p>확보한 시험지 여백에 손글씨로 적힌 숫자가 있습니다. 25-1 중간 “65.8 or 70.3”, 25-2 기말 “70”, 26-1 중간 “87.2”입니다. <strong>25-2 기말의 70과 26-1 중간의 87.2는 둘 다 표지 우상단 채점란 자리에 굵게 적혀 있고, 같은 펜이 선지까지 표시한 개인 사본</strong>입니다. 개별 점수일 가능성이 큽니다. 25-1 중간만 채점 흔적이 없는 사본의 좌상단 연필 메모이고, 기록한 사람이 두 값 중 어느 쪽인지 확정하지 못한 형태(“or”)입니다. <mark>셋 다 확정된 통계는 아닙니다.</mark> 정확한 평균과 표준편차는 학교 성적통지표나 학교알리미 공시로 확인하셔야 합니다.</p>
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section id="s12">
+  <div class="sechead"><span class="num">§ 12</span><h2>이 학교가 실제로 변별하는 지점</h2></div>
+  <p class="lede">여섯 번의 시험에서 반복해 확인된 것들입니다.</p>
+
+  <ol class="tight">
+    <li>이론 &lt;보기&gt;를 붙여 한 문항에서 두 가지를 평가합니다. 비평문 한 단락을 읽고 요약한 다음 그 틀로 작품을 다시 봐야 하므로, 비문학 독해와 문학 감상이 함께 걸립니다. 2025년부터 매 회차에 있었고, 2026년에 달라진 것은 참조하는 이론이 작품 바깥으로 멀어졌다는 점입니다.</li>
+    <li>조합형 선지입니다. 진술 네다섯 개를 전부 판정해야 합니다. 회당 2~4문항이므로 배점으로는 10~18점입니다.</li>
+    <li>한 세트에 작품을 서너 편, 많게는 다섯 편까지 넣고 “(가)는 (나)와 달리”로 묻습니다. 25-2 중간 5~10번이 고전시가 다섯 편에 여섯 문항이었습니다. 작품을 개별로 아는 것과 별개로 작품 간 비교가 요구됩니다.</li>
+    <li>영역을 섞어 배치합니다. 문학 지문에 밑줄을 그어 음운 변동(25-1 중간 18번)이나 어문규정(25-2 기말 12·13번)을 묻고, 화법 지문에 공손성의 원리를 문법 형식으로 되묻는 문항(26-1 기말 5번)을 얹습니다.</li>
+    <li>규정을 조항 번호까지 묻습니다. 표준발음법과 한글맞춤법을 원문으로 제시하고 사례를 해당 조항에 배치시킵니다. 발음의 결과가 아니라 그 근거 조항을 확인하는 방식입니다.</li>
+    <li>문법을 절차로 묻습니다. 순서도와 표로 판정 과정을 따라가게 하므로, 개념을 문장으로만 외운 경우 첫 분기에서 막힙니다.</li>
+    <li>읽어야 할 양이 많습니다. 회당 지문 8~11개, 본문 문학만 7~11편, 거기에 &lt;보기&gt; 텍스트가 붙습니다.</li>
+  </ol>
+</section>
+
+<!-- ============ 13 ============ -->
+<section id="s13">
+  <div class="sechead"><span class="num">§ 13</span><h2>김영하 선생님 코멘트</h2></div>
+  <p class="lede">제가 미사고를 담당하면서 파악한 내용입니다. 왼쪽이 제 코멘트이고, 오른쪽은 시험지 여섯 회분에서 실제로 확인되는 내용입니다.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th style="width:42%">코멘트</th><th>시험지에서 확인되는 것</th></tr></thead>
+    <tbody>
+      <tr><td>시험 범위는 소단원 2~3개에 학평과 학습지가 더해집니다.</td><td>본문 지문이 회당 8~11개이고, 문학만 7~11편입니다. 교과서 단원만으로는 채워지지 않는 분량입니다.</td></tr>
+      <tr><td>당해 3·6·9·11월 학평이 중간·기말 모든 시험에 들어갑니다. 고1은 화작과 비문학 1지문입니다.</td><td>6회 전부 화작 2문항 + 독서 2~3문항 구조입니다. 26-1 중간은 2026년 3월 학평 지문과 원문 대조로 확인했고, 나머지 5회는 아직 대조하지 못했습니다.</td></tr>
+      <tr><td>학교에서 학습지를 배부합니다. 문법은 교과서 밖 내용까지 담은 학습지가 나가고 거기서 출제됩니다. 시험 범위가 문법요소여도 품사와 문장 성분 기본 개념까지 다루고, 쪽지시험이나 지필에 나옵니다.</td><td>표준발음법 12개 조항과 한글맞춤법 8개 조항이 원문 그대로 &lt;보기&gt;에 실려 출제됐습니다. 교과서 범위를 넘습니다.</td></tr>
+      <tr><td>문학도 추가 작품을 학습지로 배부해 출제합니다. 1학년 기준 매 시험 평균 4~5작품입니다.</td><td>본문 문학이 회당 7~11편입니다. 다만 교과서 수록 목록과 대조하지 않아 그중 몇 편이 교과서 밖인지는 확인하지 못했습니다.</td></tr>
+      <tr><td>외부지문 비중이 높은 편입니다. 작년까지는 시험 범위 외 사전 공지하지 않은 문학 작품 비중이 매우 높았는데, 올해는 2~3문제 정도로 줄었습니다. 대신 &lt;보기&gt;에 복잡한 지문을 넣어 난이도를 올렸습니다.</td><td>2026년 두 회차의 본문은 전년도 작품 재사용 쪽으로 정돈됐고, &lt;보기&gt;는 보드리야르·빌둥스로만·부조리극처럼 작품 바깥 이론으로 넘어갔습니다. 다만 이론 &lt;보기&gt; 자체는 2025년 회차에도 매번 있었습니다(25-1 중간 23번, 25-1 기말 18·21번, 25-2 기말 9번, 모두 4.6점).</td></tr>
+      <tr><td>선택형 24~26문항입니다.</td><td>2025~2026년 6회는 전부 24문항입니다. 26-1 기말 공식 배점표에 서답형만점 0.00으로 명시돼 있습니다.</td></tr>
+      <tr><td>1등급 컷은 90점대 초반입니다(25·26년 기준).</td><td>배점 구성상 2문항을 틀리면 91.7점입니다. 실제 컷을 확인할 공식 자료는 확보하지 못했습니다.</td></tr>
+      <tr><td>고2는 1학기 문학, 2학기 화법과 언어입니다. 2학년은 학평 문학 전 범위가 들어갑니다(2026-1 기준).</td><td>이번 정리 대상 6회가 모두 1학년 시험지라 2학년 부분은 확인하지 못했습니다.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section id="s14">
+  <div class="sechead"><span class="num">§ 14</span><h2>인계 자료 현황</h2></div>
+  <p class="lede">지금 넘겨 드리는 자료와, 아직 확보하지 못한 자료를 그대로 적었습니다. 이걸 어떻게 쓰실지는 맡으시는 분이 판단하시면 됩니다.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th style="width:30%">자료</th><th style="width:16%">상태</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>지필 시험지 원본</td><td><span class="pill v">확보</span></td><td>6회분. 2025.04.28 / 2025.06.30 / 2025.10.01 / 2025.12.11 / 2026.04.28 / 2026.06.30</td></tr>
+      <tr><td>문항 단위 정리 노트</td><td><span class="pill v">확보</span></td><td>144문항의 세트·제재·&lt;보기&gt;·배점을 회차별로 기록한 원자료</td></tr>
+      <tr><td>학교 공식 정답·배점표</td><td><span class="pill e">1회분</span></td><td>26-1 기말 시험지 12쪽에 첨부돼 있습니다. 나머지 5회는 없습니다.</td></tr>
+      <tr><td>대응 학평 원본 대조</td><td><span class="pill e">1회분</span></td><td>2026년 3월 학평만 대조를 마쳤습니다. 나머지 5회는 지문 성격에 따른 추정 상태입니다.</td></tr>
+      <tr><td>학교 학습지</td><td><span class="pill">미확보</span></td><td>문법 조항 자료와 문학 추가 작품이 여기에 실려 나갑니다. 재원생이 보관 중인 분량을 확인하실 수 있습니다.</td></tr>
+      <tr><td>학교 평가계획서</td><td><span class="pill">미확보</span></td><td>지필과 수행의 반영 비율, 수행평가 영역·시기·채점 기준</td></tr>
+      <tr><td>수행평가(쪽지시험) 범위</td><td><span class="pill">미확보</span></td><td>문법 기본 개념이 여기서 먼저 다뤄집니다.</td></tr>
+      <tr><td>시험시간</td><td><span class="pill">미확인</span></td><td>6회 표지의 &lt;유의 사항&gt;과 공식 정답표 어디에도 표기가 없습니다.</td></tr>
+      <tr><td>교과서 출판사</td><td><span class="pill">미확인</span></td><td>시험지 표지·본문·정답표에 표기가 없습니다.</td></tr>
+      <tr><td>2학년 시험지</td><td><span class="pill">미확보</span></td><td>2학년 과목 편성과 학평 반영 범위는 코멘트로만 남아 있습니다.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout">
+    <div class="ct">기록해 두는 사항</div>
+    <p>학교 학습지는 배부 목록(회차·단원·수록 작품)만 정리해 두시면 결락 여부를 확인하실 수 있습니다. 시험지와 학습지 모두 학교 저작물이므로 복제·재배포는 하지 않는 것으로 정리해 두었습니다.</p>
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section id="s15">
+  <div class="sechead"><span class="num">§ 15</span><h2>확인 범위</h2></div>
+  <p class="lede">무엇을 근거로 쓴 것이고 어디까지가 확인된 것인지 밝혀 둡니다.</p>
+
+  <ul class="tight">
+    <li><strong>사전 공지와 미공지의 구분은 시험지만으로 확정할 수 없습니다.</strong> 어떤 작품이 학습지로 배부됐는지는 학교 자료가 있어야 확인됩니다. 이 문서는 ① 본문 자리 ② &lt;보기&gt; 자리로 나누어 정리했습니다.</li>
+    <li><strong>학평 대조는 2026년 3월분만 원문으로 확인했습니다.</strong> 나머지 5회는 지문 성격에 따른 추정입니다. 각 회차 학평 원본과 대조하면 확정됩니다.</li>
+    <li><strong>평균·표준편차·실제 등급 컷은 공식 수치가 아닙니다.</strong> 시험지 여백 손글씨 수치는 출처가 불명확합니다(§11 참조).</li>
+    <li><strong>26-1 중간 21~24번 소설은 시험지에 출처 표기가 없습니다.</strong> 겹치는 구간이 25-1 중간 지문과 문장 단위로 동일한 것을 확인해 같은 작품(박완서 「배반의 여름」)으로 보았습니다.</li>
+    <li><strong>학교 공식 정답·배점표는 26-1 기말 1회분만 확보돼 있습니다.</strong> 나머지 5회 배점은 시험지 발문에서 읽은 값입니다. 6회 모두 재검했습니다.</li>
+    <li><strong>수행평가 비중과 세부 채점 기준은 이 정리에 포함되지 않았습니다.</strong> 지필 100점 기준입니다. 학기 성적은 학교 평가계획서를 확인하셔야 합니다.</li>
+    <li><strong>서답형(서술형)은 6회 모두 없었습니다.</strong> 26-1 기말 학교 공식 정답·배점표에 ‘서답형만점 0.00’으로 명시돼 있습니다. 다만 수행평가와 쪽지시험이 따로 운영됩니다.</li>
+    <li><strong>시험시간이 확인되지 않았습니다.</strong> 6회 표지의 &lt;유의 사항&gt; 다섯 항목과 공식 정답표 어디에도 시간 표기가 없습니다.</li>
+    <li><strong>교과서 출판사가 확인되지 않았습니다.</strong> 시험지 표지·본문·정답표에 출판사 표기가 없습니다. 2025~2026년 사용본은 미확인입니다.</li>
+    <li><strong>고2 과목 편성·교과서·학평 반영 범위는 미확인입니다.</strong> 이번 정리 대상 6회가 모두 1학년 시험지입니다.</li>
+    <li><strong>&lt;보기&gt; 전수 조사는 하지 않았습니다.</strong> §05·§06에 실은 &lt;보기&gt;는 회차별 주요 장치 위주입니다. 남은 회차에도 미기재분이 있을 수 있습니다.</li>
+  </ul>
+
+  <div class="foot">
+    <p>시험지 저작권은 미사고등학교에 있으며, 이 문서는 출제 경향 확인을 위한 내부 인계 자료입니다.</p>
+  </div>
+</section>
+</main>
+</div>
+
+<script>
+(function(){
+  var L='lit',G='gram',R='read',T='talk';
+  function rep(k,n){var a=[];for(var i=0;i<n;i++)a.push(k);return a;}
+  var exams=[
+    {name:'25-1 중간', sub:'2025.04.28 · 공통국어1', seq:[].concat(rep(T,2),rep(L,8),rep(G,8),rep(R,2),rep(L,4)),
+     parts:[['문학',50.5,L],['문법',34.1,G],['독서',7.9,R],['화작',7.5,T]]},
+    {name:'25-1 기말', sub:'2025.06.30 · 공통국어1', seq:[].concat(rep(T,2),rep(L,3),rep(G,7),rep(L,10),rep(R,2)),
+     parts:[['문학',54.4,L],['문법',29.8,G],['독서',8.1,R],['화작',7.7,T]]},
+    {name:'25-2 중간', sub:'2025.10.01 · 공통국어2', seq:[].concat(rep(R,2),rep(T,2),rep(L,15),rep(G,5)),
+     parts:[['문학',63.4,L],['문법',20.9,G],['독서',7.9,R],['화작',7.8,T]]},
+    {name:'25-2 기말', sub:'2025.12.11 · 공통국어2', seq:[].concat(rep(T,2),rep(R,2),rep(L,7),rep(G,5),rep(L,8)),
+     parts:[['문학',63.0,L],['문법',21.1,G],['독서',8.3,R],['화작',7.6,T]]},
+    {name:'26-1 중간', sub:'2026.04.28 · 공통국어1', seq:[].concat(rep(L,8),rep(T,2),rep(R,3),rep(G,7),rep(L,4)),
+     parts:[['문학',49.7,L],['문법',29.5,G],['독서',13.2,R],['화작',7.6,T]]},
+    {name:'26-1 기말', sub:'2026.06.30 · 공통국어1', seq:[].concat(rep(L,3),rep(T,2),rep(G,7),rep(L,10),rep(R,2)),
+     parts:[['문학',54.5,L],['문법',29.9,G],['독서',7.9,R],['화작',7.7,T]]}
+  ];
+  var names={lit:'문학',gram:'문법',read:'독서',talk:'화작'};
+
+  var marks={1:1,5:1,10:1,15:1,20:1,24:1};
+  var sw=document.getElementById('strips'), html='';
+  exams.forEach(function(e){
+    var cells='', runs='', run=null, list=[];
+    e.seq.forEach(function(k,i){
+      cells+='<i class="s-'+k+'" data-n="'+(marks[i+1]?(i+1):'')+'" title="'+(i+1)+'번 · '+names[k]+'"></i>';
+      if(run && run.k===k){ run.n++; } else { run={k:k,n:1}; list.push(run); }
+    });
+    list.forEach(function(r){
+      runs+='<span class="r-'+r.k+'" style="grid-column:span '+r.n+'">'+names[r.k]+' '+r.n+'</span>';
+    });
+    html+='<div class="striprow"><div class="lab">'+e.name+'<span>'+e.sub+'</span></div>'
+        + '<div><div class="strip">'+cells+'</div><div class="runs">'+runs+'</div></div></div>';
+  });
+  sw.innerHTML=html;
+
+  /* --- 그림 3-2 : 영역별 배점 추이 --- */
+  var W=720,H=274,ml=48,mr=18,mt=16,pb=214;
+  function X(i){ return ml + i*(W-ml-mr)/5; }
+  function Y(v){ return pb - (v/70)*(pb-mt); }
+  var series=[
+    {k:L,label:'문학',c:'var(--lit)',v:[50.5,54.4,63.4,63.0,49.7,54.5],show:1},
+    {k:G,label:'문법',c:'var(--gram)',v:[34.1,29.8,20.9,21.1,29.5,29.9],show:1},
+    {k:R,label:'독서',c:'var(--read)',v:[7.9,8.1,7.9,8.3,13.2,7.9],show:0},
+    {k:T,label:'화작',c:'var(--talk)',v:[7.5,7.7,7.8,7.6,7.6,7.7],show:0}
+  ];
+  var s='';
+  [0,20,40,60].forEach(function(g){
+    s+='<line class="grid" x1="'+ml+'" y1="'+Y(g)+'" x2="'+(W-mr)+'" y2="'+Y(g)+'"/>';
+    s+='<text x="'+(ml-9)+'" y="'+(Y(g)+4)+'" text-anchor="end">'+g+'</text>';
+  });
+  s+='<line class="axis" x1="'+ml+'" y1="'+pb+'" x2="'+(W-mr)+'" y2="'+pb+'"/>';
+  exams.forEach(function(e,i){
+    var p=e.name.split(' ');
+    s+='<text class="klbl" x="'+X(i)+'" y="'+(pb+20)+'" text-anchor="middle">'+p[0]+'</text>';
+    s+='<text x="'+X(i)+'" y="'+(pb+35)+'" text-anchor="middle">'+p[1]+'</text>';
+  });
+  series.forEach(function(se){
+    var pts=se.v.map(function(v,i){ return X(i)+','+Y(v); }).join(' ');
+    s+='<polyline points="'+pts+'" fill="none" stroke="'+se.c+'" stroke-width="'+(se.show?2.6:1.6)+'" stroke-linejoin="round"/>';
+    se.v.forEach(function(v,i){
+      s+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="'+(se.show?4:3)+'" fill="'+se.c+'"/>';
+      if(se.show) s+='<text x="'+X(i)+'" y="'+(Y(v)+(se.k===L?-11:19))+'" text-anchor="middle" font-weight="600" fill="'+se.c+'">'+v.toFixed(1)+'</text>';
+    });
+  });
+  series.forEach(function(se,i){
+    var lx=ml+i*116;
+    s+='<rect x="'+lx+'" y="'+(H-16)+'" width="11" height="11" rx="2" fill="'+se.c+'"/>';
+    s+='<text class="klbl" x="'+(lx+17)+'" y="'+(H-6)+'">'+se.label+'</text>';
+  });
+  document.getElementById('trend').innerHTML=s;
+
+  /* --- 그림 3-3 : 고전 대 현대 --- */
+  var genre=[['25-1 중간',0,12],['25-1 기말',6,7],['25-2 중간',10,5],['25-2 기말',5,10],['26-1 중간',0,12],['26-1 기말',5,8]];
+  var gh='<div class="legend" style="margin:0 0 12px"><span><i style="background:var(--lit)"></i>고전</span><span><i style="background:var(--lit-2)"></i>현대</span><span style="color:var(--ink-3);font-size:11.5px">막대 길이는 그 회차의 문학 문항 수</span></div>';
+  genre.forEach(function(r){
+    var tot=r[1]+r[2];
+    gh+='<div class="gbar"><b>'+r[0]+'</b><div class="gtrack">'
+      + (r[1]?'<div class="g-old" style="width:'+(r[1]/15*100)+'%" title="고전 '+r[1]+'문항">'+r[1]+'</div>':'')
+      + (r[2]?'<div class="g-new" style="width:'+(r[2]/15*100)+'%" title="현대 '+r[2]+'문항">'+r[2]+'</div>':'')
+      + '</div><span class="gnum">문학 '+tot+'문항</span></div>';
+  });
+  document.getElementById('genre').innerHTML=gh;
+
+  /* --- 그림 11-2 : 오답 수와 점수 --- */
+  var sc=[100.0,95.8,91.7,87.5,83.3,79.2], cls=['sb-ok','sb-ok','sb-warn','sb-bad','sb-bad','sb-bad'], st='', sx='';
+  sc.forEach(function(v,i){
+    var hpx=(v-78)/22.5*170;
+    st+='<div class="sc"><div class="sval">'+v.toFixed(1)+'</div><div class="sbar '+cls[i]+'" style="height:'+hpx.toFixed(1)+'px"></div></div>';
+    sx+='<div>'+i+'개 틀림</div>';
+  });
+  st+='<div class="cutline" style="bottom:98px"><span>1등급 컷 추정 · 90점대 초반</span></div>';
+  document.getElementById('steps').innerHTML=st;
+  document.getElementById('stepsx').innerHTML=sx;
+
+  /* --- 문법 캘린더 --- */
+  var gtl=[['1학기 중간','음운','7~8문항 · 29.5~34.1점',100],
+           ['1학기 기말','문법 요소','7문항 · 29.8~29.9점',88],
+           ['2학기 중간','중세국어','5문항 · 20.9점',61],
+           ['2학기 기말','한글맞춤법·표기','5문항 · 21.1점',62]];
+  document.getElementById('gtl').innerHTML=gtl.map(function(u){
+    return '<div class="u"><div class="when">'+u[0]+'</div><div class="unit">'+u[1]+'</div>'
+         + '<div class="qb" style="width:'+u[3]+'%"></div><div class="qn">'+u[2]+'</div></div>';
+  }).join('');
+
+  var bw=document.getElementById('bars'), bh='';
+  exams.forEach(function(e){
+    var segs='';
+    e.parts.forEach(function(p){
+      segs+='<div class="s-'+p[2]+'" style="width:'+p[1]+'%" title="'+p[0]+' '+p[1]+'점">'+(p[1]>=12?p[0]+' '+p[1]:'')+'</div>';
+    });
+    bh+='<div class="barrow"><div class="bl"><span>'+e.name+'</span><em>'+e.sub+'</em></div><div class="stack">'+segs+'</div></div>';
+  });
+  bw.innerHTML=bh;
+
+  var vals=[3.7,3.8,3.9,4.0,4.1,4.2,4.3,4.4,4.5,4.6];
+  var cnts=[12,18,12,12,12,18,12,18,12,18];
+  var mx=Math.max.apply(null,cnts), hh='', hx='';
+  cnts.forEach(function(c,i){
+    var hi = i>=7 ? ' style="background:var(--gram);height:' : ' style="height:';
+    hh+='<div class="col"><div class="cnt">'+c+'</div><div class="bar"'+hi+(c/mx*100)+'%" title="'+vals[i]+'점 · '+c+'문항"></div></div>';
+    hx+='<div>'+vals[i].toFixed(1)+'</div>';
+  });
+  document.getElementById('hist').innerHTML=hh;
+  document.getElementById('histx').innerHTML=hx;
+})();
+</script>
